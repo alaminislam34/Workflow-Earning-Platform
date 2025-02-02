@@ -117,7 +117,7 @@ const DashboardNavbar = () => {
         <div className="flex items-center gap-1.5 md:gap-4 lg:gap-3">
           <div className="text-right">
             <p className="text-right gap-2 text-primaryColor mr-2">
-              <span className=" font-medium flex justify-end items-center text-xl gap-2">
+              <span className=" font-medium flex justify-end items-center text-sm md:text-base gap-2">
                 <span> {currentUser?.coins ? currentUser.coins : 0}</span>
                 <FaCoins />
               </span>
@@ -132,7 +132,7 @@ const DashboardNavbar = () => {
           <label tabIndex={0} className="cursor-pointer ">
             <img
               className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border-2 border-primaryColor hover:scale-105 transition-transform"
-              src={currentUser?.photo || "/default-avatar.png"}
+              src={currentUser?.photo}
               alt="user"
               referrerPolicy="no-referrer"
             />

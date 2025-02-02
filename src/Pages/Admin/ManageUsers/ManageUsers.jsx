@@ -6,10 +6,13 @@ import { Helmet } from "react-helmet";
 import DashboardTitle from "../../../Components/DashboardTitle/DashboardTitle";
 
 const ManageUsers = () => {
-  const { data, refetch } = useContext(userContext);
+  const { data, refetch, setName, setRole } = useContext(userContext);
 
   const handleSearch = (v) => {
-    console.log(v);
+    setName(v);
+  };
+  const handleSelectUser = (v) => {
+    setRole(v);
   };
   return (
     <div>
@@ -29,18 +32,25 @@ const ManageUsers = () => {
           <span className="text-lg md:text-xl font-bold">{data?.length}</span>
         </div>
       </div>
-      <div className="w-full flex flex-col md:flex-row justify-between md:items-center py-4 px-4">
-        <input
-          onChange={(v) => handleSearch(v.target.value)}
-          type="text"
-          placeholder="Search by user name"
-          className="border-none focus:border-none focus:outline-none px-2 placeholder:text-xs"
-        />
+      <div className="w-full flex flex-col md:flex-row justify-between md:items-center gap-4 py-4 px-4">
         <div>
-          <select defaultValue="select">
+          <input
+            onChange={(v) => handleSearch(v.target.value)}
+            type="text"
+            placeholder="Search by user name"
+            className="px-2 py-2 placeholder:text-xs w-full"
+          />
+        </div>
+        <div className="flex justify-end items-end">
+          <select
+            onChange={(v) => handleSelectUser(v.target.value)}
+            defaultValue="select"
+            className="text-xs"
+          >
             <option value="select" disabled>
               Select role
             </option>
+            <option value="Admin">Admin</option>
             <option value="Buyer">Buyer</option>
             <option value="Worker">Worker</option>
           </select>

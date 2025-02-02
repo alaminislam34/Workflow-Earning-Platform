@@ -2,8 +2,8 @@ import axios from "axios";
 
 // Create an Axios instance
 const axiosInstance = axios.create({
-  baseURL: "https://workflow-earning-platform-server.vercel.app",
-  // baseURL: "http://localhost:5000",
+  // baseURL: "https://workflow-earning-platform-server.vercel.app",
+  baseURL: "http://localhost:5000",
 
   withCredentials: true,
 });
