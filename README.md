@@ -116,3 +116,18 @@ The platform’s design emphasizes simplicity and usability, focusing on providi
 - **Accessibility**: Proper contrast, large fonts, and clear calls to action.
 
 The goal of the design is to make the platform accessible, efficient, and enjoyable for users across all devices and use cases.
+
+## 🔑 Environment Variables
+
+Before running this project, create a `.env.local` file in the root directory and add the following values:
+
+```bash
+VITE_API_KEY=your_firebase_api_key_here
+VITE_AUTH_DOMAIN=your_firebase_auth_domain_here
+VITE_PROJECT_ID=your_firebase_project_id_here
+VITE_STORAGE_BUCKET=your_firebase_storage_bucket_here
+VITE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
+VITE_APP_ID=your_firebase_app_id_here
+VITE_IMG_API_KEY=your_image_api_key_here
+VITE_STRIPE_PK=your_stripe_public_key_here
+```
