@@ -103,7 +103,7 @@ const Login = () => {
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email */}
-          <div>
+          <div className="text-primaryColor">
             <input
               type="email"
               placeholder="Email"
