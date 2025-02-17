@@ -244,7 +244,7 @@ const Register = () => {
                 />{" "}
                 <p
                   onClick={() => setShow(!show)}
-                  className="absolute top-1/2 -translate-y-1/2 right-4 text-xl text-gray-400"
+                  className="absolute top-1/2 -translate-y-1/2 right-4 text-xl text-gray-400 cursor-pointer"
                 >
                   {show ? <RxEyeOpen /> : <RxEyeClosed />}
                 </p>
@@ -326,7 +326,7 @@ const Register = () => {
             </button>
           </form>
           {/* Login */}
-          <p className="text-center text-xs pl-1 text-gray-600 mt-4">
+          <p className="text-center text-xs lg:text-sm font-medium pl-1 text-gray-600 mt-4">
             Already have an account?{" "}
             <a
               href="/login"

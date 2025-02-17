@@ -11,8 +11,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Auth/AuthContext";
 import Swal from "sweetalert2";
 import axiosInstance from "../../Axios/useAxiosSecure";
-import { FaEye } from "react-icons/fa";
-import { IoMdEyeOff } from "react-icons/io";
+import { RxEyeClosed, RxEyeOpen } from "react-icons/rx";
 
 // Function to fetch the current user's data
 const fetchUserData = async () => {
@@ -103,7 +102,7 @@ const Login = () => {
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email */}
-          <div className="text-primaryColor">
+          <div className="">
             <input
               type="email"
               placeholder="Email"
@@ -114,7 +113,7 @@ const Login = () => {
                   message: "Enter a valid email",
                 },
               })}
-              className={`mt-1 block w-full border-b-2 focus:border-primaryColor focus:outline-none ${
+              className={`mt-1 block w-full border-b-2 focus:border-b-primaryColor py-2 px-4 rounded-md border-base-300 focus:outline-none ${
                 errors.email ? "border-red-500" : ""
               }`}
             />
@@ -126,23 +125,25 @@ const Login = () => {
           </div>
 
           {/* Password */}
-          <div className="relative">
-            <input
-              type={show ? "text" : "password"}
-              placeholder="Password"
-              {...register("password", {
-                required: "Password is required",
-              })}
-              className={`mt-1 block w-full border-b-2 pr-12 focus:border-primaryColor focus:outline-none ${
-                errors.password ? "border-red-500" : ""
-              }`}
-            />
-            <p
-              onClick={() => setShow(!show)}
-              className="absolute top-0 right-4 text-xl text-gray-400"
-            >
-              {show ? <FaEye /> : <IoMdEyeOff />}
-            </p>
+          <div>
+            <div className="relative">
+              <input
+                type={show ? "text" : "password"}
+                placeholder="Password"
+                {...register("password", {
+                  required: "Password is required",
+                })}
+                className={`mt-1 block w-full border-b-2 pr-12 focus:border-b-primaryColor py-2 px-4 rounded-md border-base-300 focus:outline-none ${
+                  errors.password ? "border-red-500" : ""
+                }`}
+              />
+              <p
+                onClick={() => setShow(!show)}
+                className="absolute top-1/2 -translate-y-1/2 right-4 text-xl text-gray-400 cursor-pointer"
+              >
+                {show ? <RxEyeOpen /> : <RxEyeClosed />}
+              </p>
+            </div>
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">
                 {errors.password.message}
@@ -153,10 +154,10 @@ const Login = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-btnColor hover:bg-primaryColor text-white py-2 focus:border-primaryColor focus:outline-none transition"
+            className="w-full bg-btnColor hover:bg-primaryColor text-white py-2 focus:border-b-primaryColor border-base-300 focus:outline-none transition rounded-md cursor-pointer"
           >
             {isLoading ? (
-              <span className="loading loading-spinner loading-md"></span>
+              <span className="loading loading-dots loading-md"></span>
             ) : (
               "Sign in"
             )}
@@ -167,7 +168,7 @@ const Login = () => {
           Don’t have an account?{" "}
           <a
             href="/register"
-            className="text-primaryColor font-medium hover:underline"
+            className="text-primaryColor text-xs lg:text-sm font-medium hover:underline"
           >
             Create one
           </a>

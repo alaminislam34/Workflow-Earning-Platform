@@ -26,7 +26,7 @@ const WorkerSidebar = () => {
         <div className="border-b border-dashed border-white my-2"></div>
         <li data-aos="fade-right" data-aos-anchor-placement="center-bottom">
           <NavLink to="Worker" className="flex items-center gap-2">
-            <GoHomeFill /> Home
+            <GoHomeFill /> Dashboard
           </NavLink>
         </li>
         <li data-aos="fade-right" data-aos-anchor-placement="center-bottom">

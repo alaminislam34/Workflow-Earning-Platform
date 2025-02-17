@@ -53,7 +53,7 @@ const Header = () => {
       <div
         data-aos="fade-right"
         data-aos-anchor-placement="center-bottom"
-        className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative"
+        className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between relative"
       >
         {/* Website Logo */}
         <div

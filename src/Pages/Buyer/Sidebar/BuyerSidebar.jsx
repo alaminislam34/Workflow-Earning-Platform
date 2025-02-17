@@ -28,7 +28,7 @@ const BuyerSidebar = () => {
         </li>
         <li>
           <NavLink to="buyer" className="flex items-center gap-3">
-            <GoHomeFill /> Home
+            <GoHomeFill /> Dashboard
           </NavLink>
         </li>
         <li>
