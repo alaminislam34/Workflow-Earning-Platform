@@ -32,24 +32,30 @@ const ManageUsers = () => {
           <span className="text-lg md:text-xl font-bold">{data?.length}</span>
         </div>
       </div>
-      <div className="w-full flex flex-col md:flex-row justify-between md:items-center gap-4 py-4 px-4">
+      <div
+        data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom"
+        className="w-full flex flex-col md:flex-row justify-between md:items-center gap-4 py-4 px-4"
+      >
         <div>
           <input
             onChange={(v) => handleSearch(v.target.value)}
             type="text"
             placeholder="Search by user name"
-            className="px-2 py-2 placeholder:text-xs w-full"
+            className="px-2 lg:px-4 py-2 placeholder:text-xs placeholder:md:text-sm w-full border-none bg-base-200 rounded-md"
           />
         </div>
-        <div className="flex justify-end items-end">
+        <div className="flex justify-end gap-2 items-center">
+          <p>Sort: </p>
           <select
             onChange={(v) => handleSelectUser(v.target.value)}
             defaultValue="select"
-            className="text-xs"
+            className="text-xs border-none focus:border-none bg-base-200 rounded-md py-2 px-2"
           >
             <option value="select" disabled>
               Select role
             </option>
+            <option value="">All</option>
             <option value="Admin">Admin</option>
             <option value="Buyer">Buyer</option>
             <option value="Worker">Worker</option>

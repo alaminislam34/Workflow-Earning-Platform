@@ -20,7 +20,6 @@ const UsersContext = ({ children }) => {
       );
       return res.data;
     },
-    enabled: Boolean(name || role),
   });
 
   const totalCoins = useMemo(() => {

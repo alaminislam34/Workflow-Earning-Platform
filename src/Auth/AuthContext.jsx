@@ -13,6 +13,7 @@ const Auth = ({ children }) => {
   const [coin, setCoin] = useState(0);
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("");
+  const [withdrawal, setWithdrawal] = useState([]);
   const axiosPublic = useAxiosPublic();
   const [navOpen, setNavOpen] = useState(
     () => JSON.parse(localStorage.getItem("navOpen")) ?? true
@@ -80,6 +81,8 @@ const Auth = ({ children }) => {
     refetch,
     navOpen,
     setNavOpen,
+    setWithdrawal,
+    withdrawal,
   };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;

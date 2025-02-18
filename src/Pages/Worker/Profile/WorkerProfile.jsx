@@ -17,7 +17,7 @@ const WorkerProfile = () => {
         </div>
 
         {/* Update Name */}
-        <div className="space-y-2 text-center">
+        <div className="space-y-1 text-center">
           <h3 className="text-base">{currentUser?.name}</h3>
           <p className="text-xs">{currentUser?.role}</p>
         </div>

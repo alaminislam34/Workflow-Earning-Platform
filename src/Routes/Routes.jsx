@@ -178,13 +178,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "profileInfo",
-        element: (
-          <WorkerRoutes>
-            <ProfileInfo />
-          </WorkerRoutes>
-        ),
+        element: <ProfileInfo />,
       },
-
       {
         path: "/dashboard",
         element: (

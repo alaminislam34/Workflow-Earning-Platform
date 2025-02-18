@@ -165,7 +165,7 @@ const ManageUsersTable = ({ data, refetch }) => {
                 <td className=" text-center">
                   <button
                     onClick={() => removeUser(user._id)}
-                    className="text-red-600 hover:text-red-800 transition duration-300"
+                    className="text-red-600 hover:text-red-800 transition duration-300 cursor-pointer"
                     title="Delete User"
                   >
                     <AiFillDelete className="text-xl" />

@@ -108,27 +108,24 @@ const ManageTasks = () => {
           </div>
         ) : (
           <div>
-            <div className="overflow-x-auto border-t-4 border-primaryColor bg-white rounded-lg shadow-lg">
-              <table className="table w-full text-xs ">
-                <thead className="bg-gray-100 text-gray-700">
-                  <tr className="border-b border-gray-300">
-                    <th className="py-3 px-4">#</th>
-                    <th className="py-3 px-4">Buyer Email</th>
-                    <th className="py-3 px-4">Task Title</th>
-                    <th className="py-3 px-4">Workers</th>
-                    <th className="py-3 px-4">Payable</th>
-                    <th className="py-3 px-4">Deadline</th>
-                    <th className="py-3 px-4">Submission Info</th>
-                    <th className="py-3 px-4">Total Payable</th>
-                    <th className="py-3 px-4">Action</th>
+            <div className="overflow-x-auto border-t-4 border-primaryColor bg-white rounded shadow-md">
+              <table className="table w-full text-xs">
+                <thead className="bg-base-200">
+                  <tr className="border-b *:py-4 px-4 border-gray-300">
+                    <th>#</th>
+                    <th>Buyer Email</th>
+                    <th>Task Title</th>
+                    <th>Workers</th>
+                    <th>Payable</th>
+                    <th>Deadline</th>
+                    <th>Submission Info</th>
+                    <th>Total Payable</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody className="">
                   {currentTasks?.map((task, i) => (
-                    <tr
-                      key={task._id}
-                      className={`border-b hover:bg-gray-50 transition duration-200 `}
-                    >
+                    <tr key={task._id} className={`border-b`}>
                       <td className="py-3 px-4">
                         {(currentPage - 1) * itemsPerPage + i + 1}
                       </td>
@@ -144,7 +141,7 @@ const ManageTasks = () => {
                       <td className="py-3 px-4 flex justify-center items-center">
                         <button
                           onClick={() => handleDelete(task._id)}
-                          className="bg-btnColor hover:bg-primaryColor text-white p-2 rounded flex items-center gap-2 transition duration-300 ease-in-out transform hover:scale-105"
+                          className="bg-btnColor cursor-pointer hover:bg-primaryColor text-white p-2 rounded flex items-center gap-2 transition duration-300 ease-in-out transform hover:scale-105"
                           title="Delete Task"
                         >
                           <AiFillDelete />

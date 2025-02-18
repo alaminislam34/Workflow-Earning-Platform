@@ -10,7 +10,7 @@ import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { TbChevronsLeft, TbChevronsRight } from "react-icons/tb";
 
 const AdminHome = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setWithdrawal } = useContext(AuthContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -28,6 +28,7 @@ const AdminHome = () => {
     queryKey: ["withdrawalRequests"],
     queryFn: async () => {
       const res = await axiosInstance("/withdrawRequests");
+      setWithdrawal(res.data);
       return res.data;
     },
   });
