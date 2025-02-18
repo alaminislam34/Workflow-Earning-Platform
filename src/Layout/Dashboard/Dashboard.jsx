@@ -59,7 +59,7 @@ const Dashboard = () => {
           <nav className="sticky right-0 top-1 z-20">
             <DashboardNavbar />
           </nav>
-          <section className="z-0 w-11/12 px-4 py-6 lg:w-full min-h-[80vh] mx-auto">
+          <section className="z-0 w-11/12 lg:px-2 py-6 lg:w-full min-h-[80vh] mx-auto">
             <Outlet />
           </section>
           <Footer2 />

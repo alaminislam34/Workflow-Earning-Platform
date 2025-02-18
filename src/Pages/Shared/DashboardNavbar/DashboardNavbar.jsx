@@ -48,21 +48,20 @@ const DashboardNavbar = () => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setShow(false);
-        setOpen(false);
       }
     };
 
-    if (show || open) {
+    if (show) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [show, open]);
+  }, [show]);
 
   return (
-    <div className="bg-white shadow-md lg:mx-2">
+    <div className="bg-white shadow-md lg:mx-4 rounded-lg">
       <div
         data-aos="fade-right"
         data-aos-anchor-placement="center-bottom"
@@ -92,7 +91,7 @@ const DashboardNavbar = () => {
               }`}
             />
           </button>
-          <div className="items-center cursor-pointer gap-2 hidden lg:flex">
+          <div className="items-center cursor-pointer gap-2 hidden lg:flex  bg-[#FFEED5] p-2 rounded-full">
             <RiMenu4Line
               onClick={toggleNav}
               className="text-xl lg:text-2xl text-gray-500"
@@ -113,8 +112,8 @@ const DashboardNavbar = () => {
           </div>
 
           {/* User Profile */}
-          <div className="relative" ref={dropdownRef}>
-            <label tabIndex={0} className="cursor-pointer ">
+          <div className="relative">
+            <label tabIndex={0} className="cursor-pointer">
               <img
                 onClick={() => setOpen(!open)}
                 className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border-2 border-primaryColor "
@@ -170,14 +169,21 @@ const DashboardNavbar = () => {
           </div>
 
           {/* Notification Icon */}
-          <div className="relative" ref={dropdownRef}>
-            <button onClick={() => setShow(true)} className="p-2">
+          <div className="relative">
+            <button
+              onClick={() => {
+                setShow(true);
+                setOpen(false);
+              }}
+              className="p-2"
+            >
               <IoIosNotificationsOutline className="text-xl cursor-pointer md:text-2xl text-gray-600 hover:text-primaryColor transition-colors duration-300" />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
                 {currentUser?.role === "Worker" ? notification?.length : 0}
               </span>
             </button>
             <div
+              ref={dropdownRef}
               className={`absolute transition-all ease-in-out duration-200 ${
                 show
                   ? "top-12 right-0 opacity-100"
