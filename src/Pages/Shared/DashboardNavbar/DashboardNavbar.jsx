@@ -1,7 +1,11 @@
 import { RiMenu4Line } from "react-icons/ri";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Auth/AuthContext";
-import { IoMdNotifications } from "react-icons/io";
+import {
+  IoIosHelpCircleOutline,
+  IoIosLogOut,
+  IoIosNotificationsOutline,
+} from "react-icons/io";
 import WorkerSidebar from "../../Worker/Sidebar/WorkerSidebar";
 import AdminSidebar from "../../Admin/Sidebar/AdminSidebar";
 import BuyerSidebar from "../../Buyer/Sidebar/BuyerSidebar";
@@ -10,10 +14,23 @@ import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../Axios/useAxiosSecure";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { MdOutlineCancel } from "react-icons/md";
+import { NavLink } from "react-router-dom";
+import { CiUser } from "react-icons/ci";
+import { PiCoins } from "react-icons/pi";
 
 const DashboardNavbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, setNavOpen, navOpen } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("navOpen", JSON.stringify(navOpen));
+  }, [navOpen]);
+
+  // navOpen টগল করার ফাংশন
+  const toggleNav = () => {
+    setNavOpen((prev) => !prev);
+  };
 
   const { data: notification, isLoading } = useQuery({
     queryKey: ["notification"],
@@ -27,7 +44,7 @@ const DashboardNavbar = () => {
   });
 
   return (
-    <div className="bg-white shadow-md mx-2 ">
+    <div className="bg-white shadow-md mx-2 px-2">
       <div
         data-aos="fade-right"
         data-aos-anchor-placement="center-bottom"
@@ -58,7 +75,10 @@ const DashboardNavbar = () => {
             />
           </button>
           <div className="flex items-center cursor-pointer gap-2">
-            <RiMenu4Line className="text-xl lg:text-2xl text-gray-500" />
+            <RiMenu4Line
+              onClick={toggleNav}
+              className="text-xl lg:text-2xl text-gray-500"
+            />
           </div>
         </div>
         {/* Dashboard navbar */}
@@ -117,21 +137,51 @@ const DashboardNavbar = () => {
                 <FaCoins />
               </span>
             </p>
-            {/* <p className="text-[10px] sm:text-xs md:text-sm flex flex-col md:flex-row text-gray-700">
-              <span>{currentUser?.role} / </span>
-              <span className="pl-0.5"> {currentUser?.name} </span>
-            </p> */}
           </div>
 
           {/* User Profile */}
-          <label tabIndex={0} className="cursor-pointer ">
-            <img
-              className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border-2 border-primaryColor hover:scale-105 transition-transform"
-              src={currentUser?.photo}
-              alt="user"
-              referrerPolicy="no-referrer"
-            />
-          </label>
+          <div className="relative">
+            <label tabIndex={0} className="cursor-pointer ">
+              <img
+                onClick={() => setOpen(!open)}
+                className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full border-2 border-primaryColor "
+                src={currentUser?.photo}
+                alt="user"
+                referrerPolicy="no-referrer"
+              />
+            </label>
+            <div
+              className={`w-44 absolute duration-300 ${
+                open ? "top-[50px] opacity-100" : "opacity-0 top-16"
+              } right-0 bg-white shadow-xl rounded-lg`}
+            >
+              <ul className="text-sm text-gray-600 font-medium">
+                <li onClick={() => setOpen(!open)}>
+                  <NavLink to="withDrawal" className="flex items-center gap-2">
+                    <PiCoins /> Coins: {currentUser?.coins}
+                  </NavLink>
+                </li>
+                <li onClick={() => setOpen(!open)}>
+                  <NavLink to="profileInfo" className="flex items-center gap-2">
+                    <CiUser /> Profile
+                  </NavLink>
+                </li>
+                <li onClick={() => setOpen(!open)}>
+                  <NavLink to="profileInfo" className="flex items-center gap-2">
+                    <IoIosHelpCircleOutline /> Help
+                  </NavLink>
+                </li>
+                <li
+                  onClick={() => setOpen(!open)}
+                  className="bg-red-100 hover:bg-red-200"
+                >
+                  <NavLink to="profileInfo" className="flex items-center gap-2">
+                    <IoIosLogOut /> Logout
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          </div>
 
           {/* Notification Icon */}
           <div
@@ -142,7 +192,7 @@ const DashboardNavbar = () => {
             }}
             className="relative cursor-pointer"
           >
-            <IoMdNotifications className="text-xl md:text-2xl text-gray-600 hover:text-primaryColor transition-colors duration-300" />
+            <IoIosNotificationsOutline className="text-xl md:text-2xl text-gray-600 hover:text-primaryColor transition-colors duration-300" />
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
               {currentUser?.role === "Worker" ? notification?.length : 0}
             </span>

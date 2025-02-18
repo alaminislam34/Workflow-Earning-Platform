@@ -10,7 +10,7 @@ import Aos from "aos";
 import Footer2 from "../../Pages/Shared/Footer/Footer2";
 
 const Dashboard = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, navOpen } = useContext(AuthContext);
 
   useEffect(() => {
     Aos.init({
@@ -28,7 +28,9 @@ const Dashboard = () => {
         <div
           data-aos="fade-right"
           data-aos-anchor-placement="center-bottom"
-          className="p-2 bg-white hidden lg:flex lg:flex-col w-64 min-h-screen fixed left-0 text-sm md:text-base"
+          className={`p-2 duration-500 bg-white hidden lg:flex lg:flex-col ${
+            navOpen ? "w-64" : "w-16"
+          } min-h-screen fixed left-0 text-sm md:text-base z-50`}
         >
           <ul className="bg-white text-black flex flex-col justify-between flex-1 pt-4">
             <div>
@@ -36,8 +38,12 @@ const Dashboard = () => {
               {currentUser?.role === "Admin" && <AdminSidebar />}
               {currentUser?.role === "Buyer" && <BuyerSidebar />}
             </div>
-            <div className="flex justify-center items-center">
-              <div className="flex flex-row gap-6 text-xl mb-4 *:cursor-pointer">
+            <div className="flex justify-center">
+              <div
+                className={`${
+                  navOpen ? "flex-row" : "flex-col"
+                } flex gap-6 text-xl mb-4 *:cursor-pointer`}
+              >
                 <FaFacebook className="" />
                 <FaWhatsapp className="" />
                 <FaInstagram className="" />
@@ -47,12 +53,16 @@ const Dashboard = () => {
         </div>
 
         {/* Content (Scrollable) */}
-        <div className="lg:ml-64 flex-1 flex justify-between flex-col bg-gradient-to-r from-orange-50 via-orange-100 to-orange-50 min-h-screen">
+        <div
+          className={`duration-500 ${
+            navOpen ? "lg:ml-64" : "ml-16"
+          } flex-1 flex justify-between flex-col bg-gradient-to-r from-orange-50 via-orange-100 to-orange-50 min-h-screen`}
+        >
           {/* Navbar */}
-          <nav className="sticky right-0 top-2 z-50 w-full">
+          <nav className="sticky right-0 top-2 z-20 w-full">
             <DashboardNavbar />
           </nav>
-          <section>
+          <section className="z-0">
             <Outlet />
           </section>
           <Footer2 />

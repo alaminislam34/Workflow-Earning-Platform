@@ -14,7 +14,9 @@ const Auth = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("");
   const axiosPublic = useAxiosPublic();
-
+  const [navOpen, setNavOpen] = useState(
+    () => JSON.parse(localStorage.getItem("navOpen")) ?? true
+  );
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setLoading(true);
@@ -75,6 +77,8 @@ const Auth = ({ children }) => {
     setCoin,
     setRole,
     refetch,
+    navOpen,
+    setNavOpen,
   };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
