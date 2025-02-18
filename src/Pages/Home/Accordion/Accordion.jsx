@@ -1,133 +1,117 @@
-import { FaQuestionCircle } from "react-icons/fa";
-import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+} from "@mui/material";
+import { MdExpandMore } from "react-icons/md";
 
-const Accordion = () => {
+const Accordion2 = () => {
   return (
-    <div>
-      <SectionTitle
-        Title={"FAQs"}
-        description={
-          "Find answers to common questions about tasks, earnings, payments, and more in our comprehensive FAQ section for quick assistance."
-        }
-      />
-      <br />
-      <div className="flex flex-col gap-6 items-center">
-        <div className="flex flex-col lg:flex-row text-sm md:text-base items-start gap-4 md:gap-6">
-          <div
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            className="collapse collapse-plus bg-white shadow-lg rounded-lg border-t-4 border-primaryColor"
-          >
-            <input type="radio" name="my-accordion-3" defaultChecked />
-            <div className="collapse-title font-medium flex items-center gap-2">
-              <FaQuestionCircle className="text-primaryColor" />
-              What is the Micro Tasking and Earning Platform?
-            </div>
-            <div className="collapse-content">
-              <p>
-                This platform allows users to complete small tasks and earn
-                coins, which can be withdrawn as rewards. It also enables buyers
-                to create tasks and manage payments, with admin oversight for
-                seamless operations.
-              </p>
-            </div>
-          </div>
-          <div
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            className="collapse collapse-plus bg-white shadow-lg rounded-lg border-t-4 border-primaryColor"
-          >
-            <input type="radio" name="my-accordion-3" />
-            <div className="collapse-title font-medium flex items-center gap-2">
-              <FaQuestionCircle className="text-primaryColor" />
-              Who can join the platform?
-            </div>
-            <div className="collapse-content">
-              <p>
-                Anyone can join as a Worker, Buyer, or Admin, depending on their
-                role and purpose. Workers complete tasks, Buyers create tasks,
-                and Admins manage the platform.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row text-sm md:text-base items-start gap-4 md:gap-6">
-          <div
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            className="collapse collapse-plus bg-white shadow-lg rounded-lg border-t-4 border-primaryColor"
-          >
-            <input type="radio" name="my-accordion-3" />
-            <div className="collapse-title font-medium flex items-center gap-2">
-              <FaQuestionCircle className="text-primaryColor" />
-              How do Workers earn coins?
-            </div>
-            <div className="collapse-content">
-              <p>
-                Workers earn coins by completing tasks created by Buyers. Once a
-                task is completed and approved, the Worker receives the
-                designated reward in coins.
-              </p>
-            </div>
-          </div>
-          <div
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            className="collapse collapse-plus bg-white shadow-lg rounded-lg border-t-4 border-primaryColor"
-          >
-            <input type="radio" name="my-accordion-3" />
-            <div className="collapse-title font-medium flex items-center gap-2">
-              <FaQuestionCircle className="text-primaryColor" />
-              Can Workers withdraw their earnings?
-            </div>
-            <div className="collapse-content">
-              <p>
-                Yes, Workers can request withdrawals once they meet the
-                platform`s minimum coin withdrawal threshold.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row text-sm md:text-base items-start gap-4 md:gap-6">
-          <div
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            className="collapse collapse-plus bg-white shadow-lg rounded-lg border-t-4 border-primaryColor"
-          >
-            <input type="radio" name="my-accordion-3" />
-            <div className="collapse-title font-medium flex items-center gap-2">
-              <FaQuestionCircle className="text-primaryColor" />
-              How do Buyers create tasks?
-            </div>
-            <div className="collapse-content">
-              <p>
-                Buyers can create tasks by providing detailed instructions,
-                setting rewards, and specifying requirements. Tasks can then be
-                published for Workers to complete.
-              </p>
-            </div>
-          </div>
-          <div
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            className="collapse collapse-plus bg-white shadow-lg rounded-lg border-t-4 border-primaryColor"
-          >
-            <input type="radio" name="my-accordion-3" />
-            <div className="collapse-title font-medium flex items-center gap-2">
-              <FaQuestionCircle className="text-primaryColor" />
-              How does the platform ensure task quality?
-            </div>
-            <div className="collapse-content">
-              <p>
-                Buyers review submissions before approving them. They can also
-                report issues if tasks are not completed as per instructions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="space-y-4 p-4 rounded-lg">
+      {/* accordion one */}
+      <Accordion className="shadow-md border border-primaryColor rounded-lg bg-white">
+        <AccordionSummary
+          expandIcon={<MdExpandMore />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <Typography component="span" className="font-semibold">
+            What is the Micro Tasking and Earning Platform?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails className="text-gray-600">
+          This platform allows users to complete small tasks and earn coins,
+          which can be withdrawn as rewards. It also enables buyers to create
+          tasks and manage payments, with admin oversight for seamless
+          operations.
+        </AccordionDetails>
+      </Accordion>
+      {/* accordion two */}
+      <Accordion className="shadow-md border border-primaryColor bg-white">
+        <AccordionSummary
+          expandIcon={<MdExpandMore />}
+          aria-controls="panel2-content"
+          id="panel2-header"
+        >
+          <Typography component="span" className="font-semibold">
+            Who can join the platform?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails className="text-gray-600">
+          Anyone can join as a Worker, Buyer, or Admin, depending on their role
+          and purpose. Workers complete tasks, Buyers create tasks, and Admins
+          manage the platform.
+        </AccordionDetails>
+      </Accordion>
+      {/* accordion three */}
+      <Accordion className="shadow-md border border-primaryColor bg-white">
+        <AccordionSummary
+          expandIcon={<MdExpandMore />}
+          aria-controls="panel3-content"
+          id="panel3-header"
+        >
+          <Typography component="span" className="font-semibold">
+            How do Workers earn coins?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails className="text-gray-600">
+          Workers earn coins by completing tasks created by Buyers. Once a task
+          is completed and approved, the Worker receives the designated reward
+          in coins.
+        </AccordionDetails>
+      </Accordion>
+      {/* accordion four */}
+      <Accordion className="shadow-md border border-primaryColor bg-white">
+        <AccordionSummary
+          expandIcon={<MdExpandMore />}
+          aria-controls="panel4-content"
+          id="panel4-header"
+        >
+          <Typography component="span" className="font-semibold">
+            Can Workers withdraw their earnings?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails className="text-gray-600">
+          Yes, Workers can request withdrawals once they meet the platform1`s
+          minimum coin withdrawal threshold.
+        </AccordionDetails>
+      </Accordion>
+      {/* accordion five */}
+      <Accordion className="shadow-md border border-primaryColor bg-white">
+        <AccordionSummary
+          expandIcon={<MdExpandMore />}
+          aria-controls="panel5-content"
+          id="panel5-header"
+        >
+          <Typography component="span" className="font-semibold">
+            How do Buyers create tasks?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails className="text-gray-600">
+          Buyers can create tasks by providing detailed instructions, setting
+          rewards, and specifying requirements. Tasks can then be published for
+          Workers to complete.
+        </AccordionDetails>
+      </Accordion>
+      {/* accordion six */}
+      <Accordion className="shadow-md border border-primaryColor bg-white">
+        <AccordionSummary
+          expandIcon={<MdExpandMore />}
+          aria-controls="panel6-content"
+          id="panel6-header"
+        >
+          <Typography component="span" className="font-semibold">
+            How does the platform ensure task quality?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails className="text-gray-600">
+          Buyers review submissions before approving them. They can also report
+          issues if tasks are not completed as per instructions.
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 };
 
-export default Accordion;
+export default Accordion2;
