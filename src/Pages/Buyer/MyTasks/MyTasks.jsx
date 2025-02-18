@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 const MyTasks = () => {
   const { currentUser, setCoin } = useContext(AuthContext);
   return (
-    <div>
+    <div className="px-2">
       <Helmet>
         <title>Tasks List || Buyer</title>
       </Helmet>

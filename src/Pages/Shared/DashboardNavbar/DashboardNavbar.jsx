@@ -14,6 +14,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 import { PiCoins } from "react-icons/pi";
+import { FiArrowRight } from "react-icons/fi";
 import DropdownSidebar from "../../../Components/DropdownSidebar/DropdownSidebar";
 
 const DashboardNavbar = () => {
@@ -92,10 +93,17 @@ const DashboardNavbar = () => {
             />
           </button>
           <div className="items-center cursor-pointer gap-2 hidden lg:flex  bg-[#FFEED5] p-2 rounded-full">
-            <RiMenu4Line
-              onClick={toggleNav}
-              className="text-xl lg:text-2xl text-gray-500"
-            />
+            {navOpen ? (
+              <RiMenu4Line
+                onClick={toggleNav}
+                className="text-xl lg:text-2xl text-gray-500"
+              />
+            ) : (
+              <FiArrowRight
+                onClick={toggleNav}
+                className="text-xl lg:text-2xl text-gray-500"
+              />
+            )}
           </div>
         </div>
         {/* Dashboard navbar */}

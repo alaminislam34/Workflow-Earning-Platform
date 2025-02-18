@@ -40,7 +40,6 @@ const Sidebar = () => {
           </div>
           {navOpen && <WorkerProfile />}
         </div>
-        <br />
         <li
           data-aos="fade-up"
           data-aos-delay="400"
@@ -138,7 +137,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li
-          data-aos="fade-right"
+          data-aos="fade-up"
           data-aos-delay="1200"
           data-aos-anchor-placement="center-bottom"
           className={`${currentUser?.role === "Admin" && "hidden"}`}

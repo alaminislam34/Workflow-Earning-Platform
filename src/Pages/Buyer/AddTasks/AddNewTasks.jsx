@@ -7,7 +7,7 @@ import DashboardTitle from "../../../Components/DashboardTitle/DashboardTitle";
 const AddNewTasks = () => {
   const { currentUser } = useContext(AuthContext);
   return (
-    <div>
+    <div className="px-2">
       <Helmet>
         <title>Add Task || Buyer</title>
       </Helmet>

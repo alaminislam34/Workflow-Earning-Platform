@@ -135,7 +135,7 @@ const AddTaskForm = ({ userCoins }) => {
             id="task_title"
             type="text"
             {...register("task_title", { required: true })}
-            className="w-full mt-1 border-b-2 focus:outline-none py-2 focus:border-primaryColor"
+            className="w-full mt-1 focus:outline-none px-2 border-base-300 rounded-md py-2"
             placeholder="Enter your task title"
           />
         </div>
@@ -152,7 +152,7 @@ const AddTaskForm = ({ userCoins }) => {
             id="completion_date"
             type="date"
             {...register("completion_date", { required: true })}
-            className="w-full mt-1 border-b-2 focus:outline-none py-2 focus:border-primaryColor"
+            className="w-full mt-1 focus:outline-none px-2 border-base-300 rounded-md py-2"
           />
         </div>
       </div>
@@ -168,7 +168,7 @@ const AddTaskForm = ({ userCoins }) => {
         <textarea
           id="task_detail"
           {...register("task_detail", { required: true })}
-          className="w-full mt-1 border-2 focus:outline-none p-2 focus:border-primaryColor"
+          className="w-full mt-1 focus:outline-none px-2 border-base-300 rounded-md p-2"
           placeholder="Detailed description of the task"
         />
       </div>
@@ -186,7 +186,7 @@ const AddTaskForm = ({ userCoins }) => {
             id="required_workers"
             type="number"
             {...register("required_workers", { required: true, min: 1 })}
-            className="w-full mt-1 border-b-2 focus:outline-none py-2 focus:border-primaryColor"
+            className="w-full mt-1 focus:outline-none px-2 border-base-300 rounded-md py-2"
             placeholder="e.g., 10"
           />
         </div>
@@ -203,7 +203,7 @@ const AddTaskForm = ({ userCoins }) => {
             id="payable_amount"
             type="number"
             {...register("payable_amount", { required: true, min: 1 })}
-            className="w-full mt-1 border-b-2 focus:outline-none py-2 focus:border-primaryColor"
+            className="w-full mt-1 focus:outline-none px-2 border-base-300 rounded-md py-2"
             placeholder="e.g., 15"
           />
         </div>
@@ -222,7 +222,7 @@ const AddTaskForm = ({ userCoins }) => {
             id="submission_info"
             type="text"
             {...register("submission_info", { required: true })}
-            className="w-full mt-1 border-b-2 focus:outline-none py-2 focus:border-primaryColor"
+            className="w-full mt-1 focus:outline-none px-2 border-base-300 rounded-md py-2"
             placeholder="Screenshot or proof"
           />
         </div>
@@ -239,7 +239,7 @@ const AddTaskForm = ({ userCoins }) => {
             id="task_image_url"
             type="file"
             accept="image/*"
-            className="w-full mt-1 border-b-2 focus:outline-none py-2 focus:border-primaryColor"
+            className="w-full mt-1 focus:outline-none px-2 border-base-300 rounded-md py-2"
             onChange={(e) => handleImageUpload(e.target.files[0])}
             required
           />

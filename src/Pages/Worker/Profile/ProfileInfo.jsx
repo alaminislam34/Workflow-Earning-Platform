@@ -6,7 +6,12 @@ const ProfileInfo = () => {
   const { currentUser } = useContext(AuthContext);
   return (
     <div className="">
-      <div className="flex gap-4 lg:gap-6 bg-white p-4 m-2 rounded">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="200"
+        data-aos-anchor-placement="center-bottom"
+        className="flex gap-4 lg:gap-6 bg-white p-4 m-2 rounded"
+      >
         <div className="">
           <img
             src={currentUser?.photo}
@@ -24,7 +29,12 @@ const ProfileInfo = () => {
           </p>
         </div>
       </div>
-      <div className="bg-white p-4 lg:p-6 m-2 rounded ">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="200"
+        data-aos-anchor-placement="center-bottom"
+        className="bg-white p-4 lg:p-6 m-2 rounded "
+      >
         <div className="lg:w-1/2">
           <p className="text-base lg:text-lg font-semibold py-4 lg:py-6">
             Info

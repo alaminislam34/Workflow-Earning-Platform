@@ -40,16 +40,16 @@ const BuyerChart = ({ totalTasks, completeTask, userCoins, totalPayments }) => {
   const COLORS = ["#FFD700", "#FF4500"];
 
   return (
-    <div className="md:p-6">
+    <div className="">
       <section
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
         className=""
       >
         {/* Workers and Buyers Chart */}
-        <div className="bg-white p-6 rounded-lg shadow-lg mb-8 flex flex-col md:flex-row justify-around items-center">
+        <div className="bg-white lg:p-6 rounded-lg shadow-lg mb-8 flex flex-col md:flex-row justify-around items-center">
           <div>
-            <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
+            <h2 className="text-base lg:text-lg font-medium mb-4 text-center">
               Workers and Buyers Overview
             </h2>
             <ResponsiveContainer width="100%" height={300}>
@@ -70,7 +70,7 @@ const BuyerChart = ({ totalTasks, completeTask, userCoins, totalPayments }) => {
             </ResponsiveContainer>
           </div>
           <div className="">
-            <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
+            <h2 className="text-base lg:text-lg font-medium mb-4 text-center">
               Coins and Payments Overview
             </h2>
             <ResponsiveContainer width="100%" height={300}>

@@ -30,7 +30,7 @@ const PaymentHistory = () => {
   }, [payments, user]);
 
   return (
-    <div className="py-8">
+    <div className="py-8 px-2">
       <Helmet>
         <title>Tasks List || Buyer</title>
       </Helmet>

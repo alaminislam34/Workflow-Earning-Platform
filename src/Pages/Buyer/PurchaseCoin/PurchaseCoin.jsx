@@ -38,7 +38,7 @@ const PurchaseCoin = () => {
   }, [currentUser, user]);
 
   return (
-    <div>
+    <div className="px-2">
       <Helmet>
         <title>Purchase Coins || Buyer</title>
       </Helmet>
@@ -65,13 +65,8 @@ const PurchaseCoin = () => {
         {coinPackages.map((pkg, index) => (
           <div
             key={index}
-            className="border border-gray-200 rounded-lg shadow-md p-6 text-center hover:shadow-2xl hover:-translate-y-2 transition-all cursor-pointer bg-gradient-to-br from-orange-50 to-white"
+            className="border border-gray-200 rounded-lg shadow-md p-6 text-center hover:-translate-y-2 transition-transform duration-500 cursor-pointer bg-gradient-to-br from-orange-50 to-white"
             onClick={() => handlePurchase(pkg.coins, pkg.price)}
-            style={{
-              boxShadow:
-                "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease",
-            }}
           >
             <div className="flex justify-center items-center mb-4 text-btnColor">
               <FaCoins size={40} />
