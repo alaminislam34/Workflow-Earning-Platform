@@ -22,12 +22,6 @@ const DashboardStats = ({
   totalPending,
   totalEarning,
 }) => {
-  // Data for the chart
-  // const chartData = [
-  //   { name: "Submissions", value: totalSubmissions, color: "#5ca678" },
-  //   { name: "Pending", value: totalPending, color: "#ff9933" },
-  //   { name: "Earnings ($)", value: totalEarning, color: "#ffc107" },
-  // ];
   const formatDate = (date) => {
     return new Date(date).toLocaleString("en-US", {
       month: "short",
@@ -45,32 +39,45 @@ const DashboardStats = ({
       className="space-y-8"
     >
       {/* Data Display Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 m-4 md:m-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8 m-4 md:m-6">
+        {/* Data Cards */}
         <div className="bg-blue-100 p-4 rounded shadow text-center relative">
-          <h3 className="text-lg font-semibold hidden lg:block">
+          <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
+            <RiFileList2Fill />
             Total Submissions
           </h3>
-          <p className="absolute -top-5 -left-2 text-2xl md:text-4xl h-16 w-16 flex justify-center items-center bg-primaryColor/30 backdrop-blur-xl shadow-2xl rounded-full">
-            <RiFileList2Fill />
+          <p className="text-base lg:text-lg text-left font-semibold">
+            {totalSubmissions}
           </p>
-          <p className="text-xl md:text-2xl font-bold">{totalSubmissions}</p>
         </div>
+        {/* Data Cards */}
         <div className="bg-yellow-100 p-4 rounded shadow text-center relative">
-          <h3 className="text-lg font-semibold hidden lg:block">
+          <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
+            <MdPendingActions />
             Total Pending
           </h3>
-          <p className="text-xl md:text-2xl font-bold">{totalPending}</p>
-          <p className="absolute -top-5 -left-2 text-2xl md:text-4xl h-16 w-16 flex justify-center items-center bg-primaryColor/30 backdrop-blur-xl shadow-2xl rounded-full">
-            <MdPendingActions />
+          <p className="text-base lg:text-lg text-left font-semibold">
+            {totalPending}
           </p>
         </div>
+        {/* Data Cards */}
         <div className="bg-green-100 p-4 rounded shadow text-center relative">
-          <h3 className="text-lg font-semibold hidden lg:block">
+          <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
+            <FaCoins />
             Total Earnings
           </h3>
-          <p className="text-xl md:text-2xl font-bold">${totalEarning}</p>
-          <p className="absolute -top-5 -left-2 text-2xl md:text-4xl h-16 w-16 flex justify-center items-center bg-primaryColor/30 backdrop-blur-xl shadow-2xl rounded-full">
+          <p className="text-base lg:text-lg text-left font-semibold">
+            ${totalEarning}
+          </p>
+        </div>
+        {/* Data Cards */}
+        <div className="bg-green-100 p-4 rounded shadow text-center relative">
+          <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
             <FaCoins />
+            Total Earnings
+          </h3>
+          <p className="text-base lg:text-lg text-left font-semibold">
+            ${totalEarning}
           </p>
         </div>
       </div>

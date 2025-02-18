@@ -64,6 +64,7 @@ const Auth = ({ children }) => {
     },
     enabled: !!user?.email,
   });
+  console.log(user);
 
   const info = {
     user,
