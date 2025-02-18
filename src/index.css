@@ -20,9 +20,7 @@ a {
 }
 
 a.active {
-  background-color: #ff8c00;
-  color: #ffffff;
-  border-radius: 8px;
+  font-weight: 700;
 }
 
 .collapse-content {

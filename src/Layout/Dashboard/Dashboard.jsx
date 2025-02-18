@@ -22,18 +22,15 @@ const Dashboard = () => {
   }, [currentUser]);
 
   return (
-    <div className="overflow-hidden">
-      {/* Navbar */}
-      <DashboardNavbar />
-
-      <section className="flex min-h-screen mt-[56px] md:mt-[62.72px]">
+    <div className="">
+      <section className="flex min-h-screen">
         {/* Sidebar (Fixed) */}
         <div
           data-aos="fade-right"
           data-aos-anchor-placement="center-bottom"
-          className="p-2 bg-primaryColor hidden lg:flex lg:flex-col w-64 min-h-screen fixed left-0 top-[56px] md:top-[62.72px] text-sm md:text-base"
+          className="p-2 bg-white hidden lg:flex lg:flex-col w-64 min-h-screen fixed left-0 text-sm md:text-base"
         >
-          <ul className="bg-primaryColor text-base-content flex flex-col justify-between flex-1 pt-4">
+          <ul className="bg-white text-black flex flex-col justify-between flex-1 pt-4">
             <div>
               {currentUser?.role === "Worker" && <WorkerSidebar />}
               {currentUser?.role === "Admin" && <AdminSidebar />}
@@ -41,17 +38,23 @@ const Dashboard = () => {
             </div>
             <div className="flex justify-center items-center">
               <div className="flex flex-row gap-6 text-xl mb-4 *:cursor-pointer">
-                <FaFacebook className="text-gray-300 hover:text-white" />
-                <FaWhatsapp className="text-gray-300 hover:text-white" />
-                <FaInstagram className="text-gray-300 hover:text-white" />
+                <FaFacebook className="" />
+                <FaWhatsapp className="" />
+                <FaInstagram className="" />
               </div>
             </div>
           </ul>
         </div>
 
         {/* Content (Scrollable) */}
-        <div className="lg:ml-64 flex-1 bg-gradient-to-r from-orange-50 via-orange-100 to-orange-50 overflow-y-auto min-h-screen">
-          <Outlet />
+        <div className="lg:ml-64 flex-1 flex justify-between flex-col bg-gradient-to-r from-orange-50 via-orange-100 to-orange-50 min-h-screen">
+          {/* Navbar */}
+          <nav className="sticky right-0 top-2 z-50 w-full">
+            <DashboardNavbar />
+          </nav>
+          <section>
+            <Outlet />
+          </section>
           <Footer2 />
         </div>
       </section>

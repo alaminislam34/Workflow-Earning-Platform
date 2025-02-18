@@ -24,6 +24,7 @@ import WorkerHome from "../Pages/Worker/WorkerHome/WorkerHome";
 import PaymentStripe from "../Pages/Buyer/PurchaseCoin/Payment/PaymentStripe";
 import PageLoader from "../Pages/PageLoader/PageLoader";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
+import ProfileInfo from "../Pages/Worker/Profile/ProfileInfo";
 
 export const router = createBrowserRouter([
   // main layout
@@ -172,6 +173,14 @@ export const router = createBrowserRouter([
         element: (
           <WorkerRoutes>
             <WithDrawals />
+          </WorkerRoutes>
+        ),
+      },
+      {
+        path: "profileInfo",
+        element: (
+          <WorkerRoutes>
+            <ProfileInfo />
           </WorkerRoutes>
         ),
       },

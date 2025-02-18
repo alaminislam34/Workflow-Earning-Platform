@@ -10,7 +10,7 @@ const AdminSidebar = () => {
   const { currentUser } = useContext(AuthContext);
   return (
     <div>
-      <ul className="flex flex-col gap-2 text-white text-xs md:text-sm">
+      <ul className="flex flex-col gap-2  text-xs md:text-sm">
         <li className="flex flex-col text-left border-b border-white pb-4 mb-4">
           <img
             src={currentUser?.photo}

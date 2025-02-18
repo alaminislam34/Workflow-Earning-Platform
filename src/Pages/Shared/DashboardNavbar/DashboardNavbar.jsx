@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import logo from "../../../assets/logos/brandLogo.jpg";
+import { RiMenu4Line } from "react-icons/ri";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Auth/AuthContext";
 import { IoMdNotifications } from "react-icons/io";
@@ -15,7 +14,6 @@ import { MdOutlineCancel } from "react-icons/md";
 const DashboardNavbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
   const { currentUser } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const { data: notification, isLoading } = useQuery({
     queryKey: ["notification"],
@@ -29,7 +27,7 @@ const DashboardNavbar = () => {
   });
 
   return (
-    <div className="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+    <div className="bg-white shadow-md mx-2 ">
       <div
         data-aos="fade-right"
         data-aos-anchor-placement="center-bottom"
@@ -59,11 +57,8 @@ const DashboardNavbar = () => {
               }`}
             />
           </button>
-          <div
-            onClick={() => navigate("/")}
-            className="flex items-center cursor-pointer gap-2"
-          >
-            <img src={logo} alt="logo" className="w-24 md:w-28 lg:w-40" />
+          <div className="flex items-center cursor-pointer gap-2">
+            <RiMenu4Line className="text-xl lg:text-2xl text-gray-500" />
           </div>
         </div>
         {/* Dashboard navbar */}
