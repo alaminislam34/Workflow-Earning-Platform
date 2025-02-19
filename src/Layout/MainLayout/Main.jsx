@@ -6,9 +6,10 @@ import { AuthContext } from "../../Auth/AuthContext";
 import PageLoader from "../../Pages/PageLoader/PageLoader";
 import { IoCaretUpOutline } from "react-icons/io5";
 import WelcomeModal from "../../Pages/Welcome/Welcome";
+import Aos from "aos";
 
 const Main = () => {
-  const { loading } = useContext(AuthContext);
+  const { loading, theme } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   useEffect(() => {
     const handleScrollY = () => {
@@ -21,6 +22,10 @@ const Main = () => {
     window.addEventListener("scroll", handleScrollY);
     return () => window.removeEventListener("scroll", handleScrollY);
   }, []);
+  useEffect(() => {
+    Aos.init();
+  }, [theme]);
+
   return (
     <div className="overflow-hidden">
       <WelcomeModal />

@@ -4,8 +4,11 @@ import apply from "../../../assets/images/apply.jpg";
 import complete from "../../../assets/images/complete.jpg";
 import paid from "../../../assets/images/getPaid.jpg";
 import TaskSection from "./TaskSection";
+import { useContext } from "react";
+import { AuthContext } from "../../../Auth/AuthContext";
 
 const HowItWork = () => {
+  const { theme } = useContext(AuthContext);
   return (
     <div>
       <div>
@@ -21,7 +24,9 @@ const HowItWork = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
-          className="border-t-4 border-primaryColor rounded-lg shadow-lg overflow-hidden flex flex-col gap-4 pb-4"
+          className={`${
+            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+          } border-t-4 border-primaryColor rounded-lg shadow-lg overflow-hidden flex flex-col gap-4 pb-4`}
         >
           <img
             className="aspect-video object-cover bg-center bg-cover"
@@ -41,7 +46,9 @@ const HowItWork = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
-          className="border-t-4 border-primaryColor rounded-lg shadow-lg overflow-hidden flex flex-col gap-4 pb-4"
+          className={`${
+            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+          } border-t-4 border-primaryColor rounded-lg shadow-lg overflow-hidden flex flex-col gap-4 pb-4`}
         >
           <img
             className="aspect-video object-cover bg-center bg-cover"
@@ -61,7 +68,9 @@ const HowItWork = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
-          className="border-t-4 border-primaryColor rounded-lg shadow-lg overflow-hidden flex flex-col gap-4 pb-4"
+          className={`${
+            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+          } border-t-4 border-primaryColor rounded-lg shadow-lg overflow-hidden flex flex-col gap-4 pb-4`}
         >
           <img
             className="aspect-video object-cover bg-center bg-cover"
@@ -81,7 +90,9 @@ const HowItWork = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
-          className="border-t-4 border-primaryColor rounded-lg shadow-lg overflow-hidden flex flex-col gap-4 pb-4"
+          className={`${
+            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+          } border-t-4 border-primaryColor rounded-lg shadow-lg overflow-hidden flex flex-col gap-4 pb-4`}
         >
           <img
             className="aspect-video object-cover bg-center bg-cover"

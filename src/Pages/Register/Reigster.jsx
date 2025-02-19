@@ -17,7 +17,7 @@ import { RxEyeClosed, RxEyeOpen } from "react-icons/rx";
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
-  const { setLoading, refetch } = useContext(AuthContext);
+  const { setLoading, refetch, theme } = useContext(AuthContext);
   const { handleGoogleSignUp } = useAuth();
   const [passwordStrength, setPasswordStrength] = useState("");
   const [show, setShow] = useState(false);
@@ -117,7 +117,7 @@ const Register = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center min-h-screen bg-gray-100 py-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center min-h-screen py-4">
       {/* Helmet */}
       <Helmet>
         <title>Register || WorkFlow</title>
@@ -136,15 +136,19 @@ const Register = () => {
         data-aos-anchor-placement="center-bottom"
         className=" m-4"
       >
-        <div className="max-w-lg mx-auto bg-white shadow-xl p-4 md:p-6 lg:p-8 rounded-lg">
-          <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+        <div
+          className={`${
+            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+          } max-w-xl mx-auto shadow-xl p-4 md:p-6 lg:p-8 rounded-lg`}
+        >
+          <h2 className="text-2xl font-bold text-center mb-6">
             Create an account
           </h2>
           {/* Google Sign Up */}
           <div className="flex flex-col gap-2 items-center justify-center py-2">
             <button
               onClick={handleGoogleSignUp}
-              className="w-full text-center py-2 text-xs pl-1 px-12 md:px-16 flex justify-center gap-2 hover:bg-base-200 hover:bg-bgColor duration-300 border border-base-300 cursor-pointer rounded-full items-center "
+              className="w-full text-center py-2 text-xs pl-1 px-12 md:px-16 flex justify-center gap-2 hover:shadow-lg duration-300 border border-base-300 cursor-pointer rounded-full items-center "
             >
               <FcGoogle className="text-2xl" />
               Continue With Google
@@ -177,7 +181,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="task_image_url"
-                className="w-full border border-base-300 p-2 rounded bg-base-200 text-black cursor-pointer  block"
+                className="w-full border border-base-300 text-gray-400 p-2 rounded cursor-pointer  block"
               >
                 Select Your Image
               </label>

@@ -11,7 +11,7 @@ import Footer2 from "../../Pages/Shared/Footer/Footer2";
 import Sidebar from "../../Components/DashboardSidebar/Sidebar";
 
 const Dashboard = () => {
-  const { currentUser, navOpen } = useContext(AuthContext);
+  const { currentUser, navOpen, theme } = useContext(AuthContext);
   console.log(currentUser);
   useEffect(() => {
     Aos.init({
@@ -20,18 +20,20 @@ const Dashboard = () => {
       offset: 300,
       delay: 300,
     });
-  }, [currentUser]);
+  }, [currentUser, theme]);
 
   return (
     <div className="">
       <section className="min-h-screen h-full">
         {/* Sidebar (Fixed) */}
         <div
-          className={`p-2 duration-500 bg-white shadow-md hidden lg:flex lg:flex-col ${
+          className={`p-2 duration-500 shadow-lg hidden lg:flex lg:flex-col  ${
+            theme === "light" ? "bg-white" : "bg-gray-800"
+          } ${
             navOpen ? "w-56" : "w-16"
           } min-h-screen fixed left-0 text-sm md:text-base z-50`}
         >
-          <ul className="bg-white text-black flex flex-col justify-between flex-1 pt-4">
+          <ul className=" text-black flex flex-col justify-between flex-1 pt-4">
             <div>
               <Sidebar />
             </div>
@@ -53,10 +55,16 @@ const Dashboard = () => {
         <div
           className={`duration-500 ${
             navOpen ? "lg:ml-56" : "lg:ml-16"
-          } flex-1 flex justify-between flex-col bg-gradient-to-r from-orange-50 via-orange-100 to-orange-50 `}
+          } flex-1 flex justify-between flex-col ${
+            theme === "light" ? "bg-white" : " text-white"
+          } `}
         >
           {/* Navbar */}
-          <nav className="sticky right-0 top-1 z-20">
+          <nav
+            className={`shadow-lg  ${
+              theme === "light" ? "bg-white" : "bg-gray-800"
+            } sticky right-0 top-0 z-20`}
+          >
             <DashboardNavbar />
           </nav>
           <section className="z-0 w-11/12 lg:px-2 py-6 lg:py-2 lg:w-full min-h-[80vh] mx-auto">

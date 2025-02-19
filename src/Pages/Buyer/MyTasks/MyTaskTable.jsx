@@ -16,7 +16,7 @@ const ITEMS_PER_PAGE = 5; // Number of items per page
 const MyTaskTable = ({ userCoins }) => {
   const [editingTask, setEditingTask] = useState(null);
   const [currentPage, setCurrentPage] = useState(1); // Current page state
-  const { user } = useContext(AuthContext);
+  const { user, theme } = useContext(AuthContext);
   const { mutate } = useUpdateCoin();
 
   const { data: tasks = [], refetch } = useQuery({
@@ -133,7 +133,9 @@ const MyTaskTable = ({ userCoins }) => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="overflow-x-auto rounded-lg shadow-lg bg-white"
+        className={`${
+          theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+        } overflow-x-auto rounded-lg shadow-lg`}
       >
         <table className="w-full table">
           <thead>

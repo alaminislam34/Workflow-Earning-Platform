@@ -81,7 +81,7 @@ const TaskDetailsPage = () => {
       <div>
         <button
           onClick={() => navigate("/")}
-          className="cursor-pointer py-2 px-4 rounded-lg bg-primaryColor text-white"
+          className="cursor-pointer py-2 px-4 rounded-lg bg-primaryColor text-white ml-4"
         >
           Back
         </button>
@@ -106,7 +106,7 @@ const TaskDetailsPage = () => {
           <div className="space-y-2">
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Required Workers</p>
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.required_workers}
               </p>
             </p>
@@ -114,25 +114,25 @@ const TaskDetailsPage = () => {
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Payable Amount</p>
 
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.payable_amount} $
               </p>
             </p>
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Buyer Name</p>
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.buyer_name}
               </p>
             </p>
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Buyer Email</p>
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.buyer_email}
               </p>
             </p>
-            <p className="text-sm lg:text-base text-gray-700 pt-2">
+            <p className="text-sm lg:text-base  pt-2">
               <p className="font-medium">Description</p>{" "}
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 {data.task_detail || "No description available."}
               </p>
             </p>

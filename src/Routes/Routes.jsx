@@ -28,7 +28,6 @@ import ProfileInfo from "../Pages/Worker/Profile/ProfileInfo";
 import Help from "../Pages/Shared/Help/Help";
 import BlogPage from "../Pages/Shared/Blog/Blog";
 import TaskDetailsPage from "../Pages/Home/Tasks/TaskDetailsPage";
-import Support from "../Components/Support/Support";
 
 export const router = createBrowserRouter([
   // main layout
@@ -198,16 +197,16 @@ export const router = createBrowserRouter([
         element: <ProfileInfo />,
       },
       {
+        path: "help",
+        element: <Help />,
+      },
+      {
         path: "/dashboard",
         element: (
           <BuyerRoutes>
             <BuyerHome />
           </BuyerRoutes>
         ),
-      },
-      {
-        path: "support",
-        element: <Support />,
       },
     ],
   },

@@ -12,18 +12,25 @@ import axiosInstance from "../../../Axios/useAxiosSecure";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { MdOutlineCancel } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
-import { CiDark, CiUser } from "react-icons/ci";
+import { CiDark, CiLight, CiUser } from "react-icons/ci";
 import { PiCoins } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
 import DropdownSidebar from "../../../Components/DropdownSidebar/DropdownSidebar";
 import { GoHome } from "react-icons/go";
-import { BiMessageRounded } from "react-icons/bi";
+import Aos from "aos";
 
 const DashboardNavbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [show, setShow] = useState(false);
-  const { currentUser, setNavOpen, navOpen, review, handleLogout } =
-    useContext(AuthContext);
+  const {
+    currentUser,
+    setNavOpen,
+    navOpen,
+    review,
+    handleLogout,
+    theme,
+    toggleTheme,
+  } = useContext(AuthContext);
   console.log(review);
   // console.log(currentUser);
   const [open, setOpen] = useState(false);
@@ -67,8 +74,12 @@ const DashboardNavbar = () => {
     };
   }, [show]);
 
+  useEffect(() => {
+    Aos.init();
+  }, [theme]);
+
   return (
-    <div className="bg-white shadow-md lg:mx-4 rounded-lg">
+    <div className={`px-2`}>
       <div
         data-aos="fade-right"
         data-aos-anchor-placement="center-bottom"
@@ -98,7 +109,7 @@ const DashboardNavbar = () => {
               }`}
             />
           </button>
-          <div className="items-center cursor-pointer gap-2 hidden lg:flex  bg-[#FFEED5] p-2 rounded-full">
+          <div className="items-center cursor-pointer gap-2 hidden lg:flex  p-2 rounded-full">
             {navOpen ? (
               <RiMenu4Line
                 onClick={toggleNav}
@@ -113,13 +124,22 @@ const DashboardNavbar = () => {
           </div>
         </div>
         {/* Dashboard navbar */}
-        <div>
-          <button>
-            <CiDark />
-          </button>
-        </div>
+
         {/* User Info and Notifications */}
         <div className="flex items-center gap-1.5 md:gap-4 lg:gap-3">
+          <div>
+            <button
+              onClick={toggleTheme}
+              type="button"
+              className="cursor-pointer p-2 rounded-full"
+            >
+              {theme === "light" ? (
+                <CiDark className="text-xl" />
+              ) : (
+                <CiLight className="text-xl" />
+              )}
+            </button>
+          </div>
           <div className="text-right">
             <p className="text-right gap-2 text-primaryColor mr-2">
               <span className=" font-medium flex justify-end items-center text-sm md:text-base gap-2">
@@ -145,7 +165,9 @@ const DashboardNavbar = () => {
                 open
                   ? "top-[50px] opacity-100"
                   : "opacity-0 top-16 pointer-events-none"
-              } right-0 bg-white shadow-xl rounded-lg`}
+              } right-0 ${
+                theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+              } shadow-xl rounded-lg`}
             >
               <ul className="text-sm text-gray-600 font-medium">
                 <li onClick={() => setOpen(false)} className="pb-2">
@@ -176,15 +198,6 @@ const DashboardNavbar = () => {
                 >
                   <NavLink to="help" className="flex items-center gap-2">
                     <IoIosHelpCircleOutline className="text-lg" /> Help
-                  </NavLink>
-                </li>
-                <li
-                  onClick={() => setOpen(false)}
-                  className="hover:bg-base-300"
-                >
-                  <NavLink to="support" className="flex items-center gap-2">
-                    <BiMessageRounded />
-                    Support
                   </NavLink>
                 </li>
 
@@ -230,7 +243,9 @@ const DashboardNavbar = () => {
                 show
                   ? "top-12 right-0 opacity-100"
                   : "top-16 right-0 pointer-events-none opacity-0"
-              } shadow-xl bg-white rounded-lg w-64`}
+              } shadow-xl ${
+                theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+              } rounded-lg w-64`}
             >
               <div>
                 <div className="flex justify-between items-center px-4 py-2 bg-base-200">

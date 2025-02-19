@@ -38,23 +38,21 @@ const Help = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-        Help Center !
-      </h2>
+      <h2 className="text-2xl font-semibold mb-4">Help Center !</h2>
 
       {/* FAQ Section */}
       <div className="space-y-4">
         {faqs.map((faq, index) => (
-          <div key={index} className="rounded-lg p-2 border border-gray-500">
+          <div key={index} className="rounded-lg p-2 border border-base-300">
             <button
-              className="w-full flex justify-between text-sm lg:text-base items-center font-medium text-gray-700"
+              className="w-full flex justify-between text-sm lg:text-base items-center font-medium "
               onClick={() => toggleFAQ(index)}
             >
               {faq.question}
               {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
             </button>
             {openIndex === index && (
-              <p className="mt-2 text-xs lg:text-sm text-gray-600">
+              <p className="mt-2 text-xs lg:text-sm text-gray-400">
                 {faq.answer}
               </p>
             )}
@@ -76,7 +74,7 @@ const Help = () => {
       {/* Getting Started Guide */}
       <div className="mt-6">
         <h3 className="text-lg font-semibold">Getting Started</h3>
-        <ul className="mt-2 list-disc list-inside text-gray-600">
+        <ul className="mt-2 list-disc list-inside ">
           <li>
             Create an account and complete your profile to increase job
             opportunities.
@@ -96,10 +94,8 @@ const Help = () => {
       {/* Contact Support */}
       <div className="mt-6 text-center">
         <h3 className="text-lg font-semibold">Need More Help?</h3>
-        <p className="text-gray-500">
-          Contact our support team for further assistance.
-        </p>
-        <button className="mt-3 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+        <p className="">Contact our support team for further assistance.</p>
+        <button className="mt-3 bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-primaryColor cursor-pointer transition">
           Chat with Support
         </button>
       </div>

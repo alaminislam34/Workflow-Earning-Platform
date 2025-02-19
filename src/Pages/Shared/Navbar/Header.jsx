@@ -79,7 +79,11 @@ const Header = () => {
                 onClick={toggleTheme}
                 className="cursor-pointer p-2 rounded-full"
               >
-                {theme === "light" ? <CiDark /> : <CiLight />}
+                {theme === "light" ? (
+                  <CiDark className="text-xl" />
+                ) : (
+                  <CiLight className="text-xl" />
+                )}
               </button>
               <a
                 href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-alaminislam34"
@@ -145,7 +149,11 @@ const Header = () => {
                 onClick={toggleTheme}
                 className="cursor-pointer p-2 rounded-full"
               >
-                {theme === "light" ? <CiDark /> : <CiLight />}
+                {theme === "light" ? (
+                  <CiDark className="text-xl" />
+                ) : (
+                  <CiLight className="text-xl" />
+                )}
               </button>
               <p className=" font-medium flex items-center gap-2 text-primaryColor pr-2">
                 <ImCoinDollar />{" "}
@@ -186,7 +194,11 @@ const Header = () => {
             onClick={toggleTheme}
             className="cursor-pointer p-2 rounded-full"
           >
-            {theme === "light" ? <CiDark /> : <CiLight />}
+            {theme === "light" ? (
+              <CiDark className="text-xl" />
+            ) : (
+              <CiLight className="text-xl" />
+            )}
           </button>
           <button
             className=" text-xl md:text-2xl py-1 px-2 h-10"

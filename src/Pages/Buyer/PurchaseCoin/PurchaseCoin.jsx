@@ -44,18 +44,7 @@ const PurchaseCoin = () => {
       </Helmet>
       <DashboardTitle title={"Purchase Coins"} />
       {/* Current Balance Section */}
-      <div
-        data-aos="fade-up"
-        data-aos-anchor-placement="center-bottom"
-        className="mt-6 text-center bg-orange-50 border border-orange-200 rounded-lg p-4"
-      >
-        <h3 className="text-lg font-semibold text-primaryColor">
-          Your Current Coin Balance
-        </h3>
-        <p className="text-2xl font-bold text-primaryColor">
-          {currentUser?.coins || 0} Coins
-        </p>
-      </div>
+
       {/* Coin Packages Section */}
       <div
         data-aos="fade-up"
@@ -65,20 +54,20 @@ const PurchaseCoin = () => {
         {coinPackages.map((pkg, index) => (
           <div
             key={index}
-            className="border border-gray-200 rounded-lg shadow-md p-6 text-center hover:-translate-y-2 transition-transform duration-500 cursor-pointer bg-gradient-to-br from-orange-50 to-white"
+            className="border border-gray-200 rounded-lg shadow-md p-6 text-center hover:-translate-y-2 transition-transform duration-500 cursor-pointer "
             onClick={() => handlePurchase(pkg.coins, pkg.price)}
           >
             <div className="flex justify-center items-center mb-4 text-btnColor">
               <FaCoins size={40} />
             </div>
-            <h2 className="text-xl font-semibold text-gray-800 ">
-              {pkg.coins} Coins
-            </h2>
-            <p className="text-lg text-gray-500 mt-2">=</p>
-            <p className="text-2xl font-bold text-gray-900 flex items-center justify-center gap-2">
-              {pkg.price}
-              <FaDollarSign className="text-btnColor" size={20} />
-            </p>
+            <div className="flex flex-row gap-2 items-center text-center justify-center">
+              <h2 className=" ">{pkg.coins} Coins</h2>
+              <p className="">=</p>
+              <p className="flex items-center justify-center gap-2">
+                {pkg.price}
+                <FaDollarSign className="text-btnColor" size={15} />
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -88,7 +77,7 @@ const PurchaseCoin = () => {
         data-aos-anchor-placement="center-bottom"
         className="mt-8 text-center"
       >
-        <h3 className="text-lg font-semibold text-gray-700">
+        <h3 className="text-lg lg:text-xl font-semibold ">
           Why Purchase Coins?
         </h3>
         <p className="text-gray-600 mt-2">

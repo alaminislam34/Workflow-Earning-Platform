@@ -117,7 +117,7 @@ const ManageUsersTable = ({ data, refetch }) => {
       data-aos-anchor-placement="center-bottom"
       className=""
     >
-      <div className="overflow-x-auto rounded-lg shadow-lg bg-white">
+      <div className="overflow-x-auto rounded-lg shadow-lg ">
         <table className="table w-full text-xs">
           <thead className="bg-gray-100 text-gray-700 truncate">
             <tr>
@@ -132,7 +132,7 @@ const ManageUsersTable = ({ data, refetch }) => {
           </thead>
           <tbody className="text-xs md:text-sm">
             {paginatedUsers?.map((user, i) => (
-              <tr key={user._id} className="border-b hover:bg-gray-50 truncate">
+              <tr key={user._id} className="border-b truncate">
                 <td>{(currentPage - 1) * itemsPerPage + i + 1} </td>
                 <td className=" text-center">
                   <div className="">

@@ -3,8 +3,11 @@ import review from "../../../assets/images/review.jpg";
 import social from "../../../assets/images/social.jpg";
 import dataEntry from "../../../assets/images/dataEntry.jpg";
 import appTest from "../../../assets/images/appText.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../../../Auth/AuthContext";
 
 const TaskSection = () => {
+  const { theme } = useContext(AuthContext);
   const tasks = [
     {
       id: 1,
@@ -56,7 +59,9 @@ const TaskSection = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="center-bottom"
             key={task.id}
-            className="border-t-4 border-primaryColor shadow-lg rounded-lg overflow-hidden "
+            className={`${
+              theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+            } border-t-4 border-primaryColor shadow-lg rounded-lg overflow-hidden`}
           >
             <img
               className="aspect-video object-cover bg-center bg-cover"

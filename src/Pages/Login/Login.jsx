@@ -7,11 +7,12 @@ import { useQuery } from "@tanstack/react-query";
 import Lottie from "react-lottie";
 import loginJSON from "../../assets/lottieFile/login.json";
 import { Helmet } from "react-helmet";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth/AuthContext";
 import Swal from "sweetalert2";
 import axiosInstance from "../../Axios/useAxiosSecure";
 import { RxEyeClosed, RxEyeOpen } from "react-icons/rx";
+import Aos from "aos";
 
 // Function to fetch the current user's data
 const fetchUserData = async () => {
@@ -27,7 +28,11 @@ const fetchUserData = async () => {
 
 const Login = () => {
   const [show, setShow] = useState(false);
-  const { setLoading, refetch: CurrentRefetch } = useContext(AuthContext);
+  const {
+    setLoading,
+    refetch: CurrentRefetch,
+    theme,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -78,8 +83,12 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    Aos.init();
+  }, [theme]);
+
   return (
-    <div className="flex justify-center flex-col md:flex-row items-center min-h-[80vh] bg-gray-100 px-4">
+    <div className="flex justify-center flex-col md:flex-row items-center min-h-[80vh] px-4">
       <Helmet>
         <title>Login page || WorkFlow</title>
       </Helmet>
@@ -93,11 +102,11 @@ const Login = () => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="bg-white shadow-xl rounded-lg p-8 w-full max-w-md"
+        className={`${
+          theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+        }shadow-xl rounded-lg p-8 w-full max-w-md`}
       >
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-          Sign In
-        </h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Sign In</h2>
 
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

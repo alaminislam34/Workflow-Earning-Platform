@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Auth/AuthContext";
 import axiosInstance from "../../../Axios/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ const TaskDetails = () => {
   const { data } = useLoaderData();
   const { user, taskRefetch } = useContext(AuthContext);
   const [submissionDetails, setSubmissionDetails] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,7 +71,15 @@ const TaskDetails = () => {
   console.log(data);
   return (
     <div className="md:p-6">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-gradient-to-br from-orange-50 to-yellow-100">
+      <div>
+        <button
+          onClick={() => navigate("/dashboard/taskList")}
+          className="text-xs lg:text-sm py-2 px-4 rounded-lg cursor-pointer"
+        >
+          Back
+        </button>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
         <div>
           <img src={data.task_image_url} alt="" />
         </div>
@@ -86,41 +95,41 @@ const TaskDetails = () => {
           <div className="space-y-2">
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Required Workers</p>
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.required_workers}
               </p>
             </p>
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Task Title</p>
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.task_title}
               </p>
             </p>
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Payable Amount</p>
 
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.payable_amount}
               </p>
             </p>
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Buyer Name</p>
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.buyer_name}
               </p>
             </p>
             <p className="text-sm lg:text-base flex *:flex-1">
               <p className="">Buyer Email</p>
-              <p className="text-gray-600 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 : {data.buyer_email}
               </p>
             </p>
           </div>
         </div>
         <div className="lg:col-span-2 p-2 lg:p-4">
-          <p className="text-sm lg:text-base text-gray-700">
+          <p className="text-sm lg:text-base ">
             <p className="">Description</p>{" "}
-            <p className="text-gray-600 text-xs lg:text-sm">
+            <p className="text-gray-500 text-xs lg:text-sm">
               {data.task_detail || "No description available."}
             </p>
           </p>
@@ -131,16 +140,16 @@ const TaskDetails = () => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="bg-white p-4 lg:p-8 rounded-lg shadow-lg"
+        className=" p-4 lg:p-8 rounded-lg shadow-lg"
       >
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 pb-2">
+        <h2 className="text-2xl font-bold mb-6  border-b-2 pb-2">
           Submit Your Work
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label
               htmlFor="submissionDetails"
-              className="block text-sm lg:text-base font-medium text-gray-700 mb-2"
+              className="block text-sm lg:text-base font-medium text-gray-500 mb-2"
             >
               Submission Details
             </label>

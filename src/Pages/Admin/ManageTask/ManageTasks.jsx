@@ -7,6 +7,7 @@ import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Aos from "aos";
+import { GoSortDesc } from "react-icons/go";
 
 const ManageTasks = () => {
   const { data, isLoading, refetch } = useQuery({
@@ -21,11 +22,26 @@ const ManageTasks = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
+  // Sorting State
+  const [sortOrder, setSortOrder] = useState("asc");
+
+  // Handle Sorting
+  const handleSort = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  };
+
+  // Sort data based on payable_amount
+  const sortedTasks = [...(data || [])].sort((a, b) =>
+    sortOrder === "asc"
+      ? a.payable_amount - b.payable_amount
+      : b.payable_amount - a.payable_amount
+  );
+
   // Calculate total pages
-  const totalPages = Math.ceil(data?.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedTasks?.length / itemsPerPage);
 
   // Get tasks for the current page
-  const currentTasks = data?.slice(
+  const currentTasks = sortedTasks.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -87,15 +103,26 @@ const ManageTasks = () => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="mb-6"
+        className="mb-6 flex flex-col md:flex-row  md:justify-between items-center"
       >
         <div className="flex gap-4 items-center my-2">
-          <h2 className="text-base lg:text-lg font-medium text-gray-700">
+          <h2 className="text-base lg:text-lg font-medium text-gray-500">
             Total Tasks:
           </h2>
           <span className="text-base lg:text-lg font-medium">
             {data?.length}
           </span>
+        </div>
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={handleSort}
+        >
+          <p className="text-gray-500">Sort by Amount</p>
+          <GoSortDesc
+            className={`text-gray-500 transform text-xl ${
+              sortOrder === "asc" ? "rotate-180" : ""
+            }`}
+          />
         </div>
       </div>
 
@@ -110,10 +137,10 @@ const ManageTasks = () => {
           </div>
         ) : (
           <div>
-            <div className="overflow-x-auto border-t-4 border-primaryColor bg-white rounded shadow-md">
+            <div className="overflow-x-auto border-t-4 border-primaryColor rounded shadow-md">
               <table className="table w-full text-xs">
-                <thead className="bg-base-200">
-                  <tr className="border-b *:py-4 px-4 border-gray-300">
+                <thead className="">
+                  <tr className="border-b">
                     <th>#</th>
                     <th>Buyer Email</th>
                     <th>Task Title</th>
@@ -164,20 +191,18 @@ const ManageTasks = () => {
                 <MdChevronLeft />
               </button>
 
-              {/* Page Numbers */}
               {[...Array(totalPages)].map((_, index) => (
-                <li key={index} className="list-none mr-2">
-                  <button
-                    className={`btn btn-sm hover:bg-primaryColor ${
-                      currentPage === index + 1
-                        ? "bg-primaryColor text-white"
-                        : "bg-gray-200 text-black"
-                    }`}
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </button>
-                </li>
+                <button
+                  key={index}
+                  className={`btn btn-sm ${
+                    currentPage === index + 1
+                      ? "bg-primaryColor text-white"
+                      : "bg-gray-200 text-black"
+                  }`}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </button>
               ))}
 
               <button

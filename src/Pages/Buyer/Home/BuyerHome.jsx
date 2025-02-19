@@ -13,7 +13,7 @@ import DashboardHomeTitle from "../../../Components/DashboardTitle/DashboardHome
 import DashboardTitle from "../../../Components/DashboardTitle/DashboardTitle";
 
 const BuyerHome = () => {
-  const { user, currentUser, setReview } = useContext(AuthContext);
+  const { user, currentUser, setReview, theme } = useContext(AuthContext);
   const { mutate } = useUpdateCoin();
   const [selectedSubmission, setSelectedSubmission] = useState(null);
 
@@ -134,11 +134,13 @@ const BuyerHome = () => {
       </Helmet>
       <DashboardHomeTitle />
       <br />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
-          className="p-4 bg-blue-100 rounded-lg shadow-lg text-center"
+          className={`p-4 rounded-lg shadow-lg text-center  ${
+            theme === "light" ? "bg-orange-100" : "bg-gray-800"
+          }`}
         >
           <h3 className="text-xs md:text-sm ">Total Tasks</h3>
           <p className="text-xl md:text-2xl tracking-widest font-bold">
@@ -148,7 +150,9 @@ const BuyerHome = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
-          className="p-4 bg-yellow-100 rounded-lg shadow-lg text-center"
+          className={`p-4  rounded-lg shadow-lg text-center  ${
+            theme === "light" ? "bg-orange-100" : "bg-gray-800"
+          }`}
         >
           <h3 className="text-xs md:text-sm ">Pending Tasks</h3>
           <p className="text-xl md:text-2xl tracking-widest font-bold">
@@ -158,7 +162,21 @@ const BuyerHome = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
-          className="p-4 bg-green-100 rounded-lg shadow-lg text-center"
+          className={`p-4  rounded-lg shadow-lg text-center  ${
+            theme === "light" ? "bg-orange-100" : "bg-gray-800"
+          }`}
+        >
+          <h3 className="text-xs md:text-sm ">Total Coins</h3>
+          <p className="text-xl md:text-2xl tracking-widest font-bold">
+            ${currentUser?.coins}
+          </p>
+        </div>
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          className={`p-4  rounded-lg shadow-lg text-center  ${
+            theme === "light" ? "bg-orange-100" : "bg-gray-800"
+          }`}
         >
           <h3 className="text-xs md:text-sm ">Total Payment</h3>
           <p className="text-xl md:text-2xl tracking-widest font-bold">
@@ -178,7 +196,9 @@ const BuyerHome = () => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="overflow-x-auto border-t-4 border-primaryColor bg-white  rounded-lg shadow-lg"
+        className={`${
+          theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+        } overflow-x-auto border-t-4 border-primaryColor rounded-lg shadow-lg`}
       >
         <table className="table w-full">
           <thead>

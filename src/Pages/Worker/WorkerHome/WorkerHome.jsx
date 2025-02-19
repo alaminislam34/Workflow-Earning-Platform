@@ -10,7 +10,7 @@ import DashboardTitle from "../../../Components/DashboardTitle/DashboardTitle";
 import Aos from "aos";
 
 const WorkerHome = () => {
-  const { user } = useContext(AuthContext);
+  const { user, theme } = useContext(AuthContext);
 
   // fetch submissions data
   const { data: submissions = [] } = useQuery({
@@ -88,7 +88,9 @@ const WorkerHome = () => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="overflow-x-auto border-t-4 border-primaryColor bg-white  rounded-lg shadow-lg"
+        className={`${
+          theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+        } overflow-x-auto border-t-4 border-primaryColor  rounded-lg shadow-lg`}
       >
         <table className="table w-full">
           <thead>

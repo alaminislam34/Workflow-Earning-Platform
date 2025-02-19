@@ -102,7 +102,7 @@ const AdminHome = () => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="overflow-x-auto border-t-4 border-primaryColor bg-white  rounded-lg shadow-lg"
+        className="overflow-x-auto border-t-4 border-primaryColor   rounded-lg shadow-lg"
       >
         <table className="table w-full rounded-lg">
           <thead>
@@ -121,7 +121,7 @@ const AdminHome = () => {
                   { _id, worker_name, withdrawal_coin, status, worker_email },
                   i
                 ) => (
-                  <tr key={_id} className="border-b hover:bg-gray-50">
+                  <tr key={_id} className="border-b ">
                     <td className="">
                       {(currentPage - 1) * itemsPerPage + i + 1}
                     </td>

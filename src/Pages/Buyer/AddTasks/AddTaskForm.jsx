@@ -14,7 +14,7 @@ const AddTaskForm = ({ userCoins }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
-  const { user, refetch } = useContext(AuthContext);
+  const { user, refetch, theme } = useContext(AuthContext);
 
   const handleImageUpload = async (imageFile) => {
     const formData = new FormData();
@@ -121,14 +121,16 @@ const AddTaskForm = ({ userCoins }) => {
       data-aos="fade-up"
       data-aos-anchor-placement="center-bottom"
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 lg:max-w-4xl mx-auto w-full bg-white border-t-4 border-primaryColor shadow-xl rounded-lg space-y-6"
+      className={`${
+        theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+      } p-4 lg:p-6 lg:max-w-4xl mx-auto w-full border-t-4 border-primaryColor shadow-xl rounded-lg space-y-6`}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
         {/* Task Title */}
         <div>
           <label
             htmlFor="task_title"
-            className="block text-sm font-semibold text-gray-700"
+            className="block text-base lg:text-lg font-semibold "
           >
             Task Title
           </label>
@@ -145,7 +147,7 @@ const AddTaskForm = ({ userCoins }) => {
         <div>
           <label
             htmlFor="completion_date"
-            className="block text-sm font-semibold text-gray-700"
+            className="block text-base lg:text-lg font-semibold "
           >
             Completion Date
           </label>
@@ -162,7 +164,7 @@ const AddTaskForm = ({ userCoins }) => {
       <div>
         <label
           htmlFor="task_detail"
-          className="block text-sm font-semibold text-gray-700"
+          className="block text-base lg:text-lg font-semibold "
         >
           Task Detail
         </label>
@@ -179,7 +181,7 @@ const AddTaskForm = ({ userCoins }) => {
         <div>
           <label
             htmlFor="required_workers"
-            className="block text-sm font-semibold text-gray-700"
+            className="block text-base lg:text-lg font-semibold "
           >
             Required Workers
           </label>
@@ -196,7 +198,7 @@ const AddTaskForm = ({ userCoins }) => {
         <div>
           <label
             htmlFor="payable_amount"
-            className="block text-sm font-semibold text-gray-700"
+            className="block text-base lg:text-lg font-semibold "
           >
             Payable Amount (Per Worker)
           </label>
@@ -215,7 +217,7 @@ const AddTaskForm = ({ userCoins }) => {
         <div>
           <label
             htmlFor="submission_info"
-            className="block text-sm font-semibold text-gray-700"
+            className="block text-base lg:text-lg font-semibold "
           >
             Submission Info
           </label>
@@ -232,7 +234,7 @@ const AddTaskForm = ({ userCoins }) => {
         <div>
           <label
             htmlFor="task_image_url"
-            className="block text-sm font-semibold text-gray-700"
+            className="block text-base lg:text-lg font-semibold "
           >
             Task Image
           </label>

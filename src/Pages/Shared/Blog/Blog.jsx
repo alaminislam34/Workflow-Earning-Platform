@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../Auth/AuthContext";
 
 const blogs = [
   {
@@ -25,10 +26,11 @@ const blogs = [
 
 const BlogPage = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const { theme } = useContext(AuthContext);
 
   return (
     <div className="p-6 rounded-lg">
-      <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">
+      <h2 className="text-3xl font-semibold mb-6 text-center">
         Micro-Task Blog
       </h2>
 
@@ -38,13 +40,15 @@ const BlogPage = () => {
             <button
               key={index}
               onClick={() => setSelectedBlog(blog)}
-              className="block w-full text-left p-4 cursor-pointer border rounded-lg bg-gray-100 hover:bg-gray-200 transition"
+              className={`block w-full text-left p-4 cursor-pointer ${
+                theme === "light" ? "bg-gray-100" : "bg-gray-800 text-white"
+              } rounded-lg transition`}
             >
               <h3 className=" font-semibold">{blog.title}</h3>
             </button>
           ))}
         </div>
-        <div className="bg-gray-50 p-6 rounded-lg shadow-md min-h-[250px]">
+        <div className="p-6 rounded-lg shadow-md min-h-[250px]">
           {selectedBlog ? (
             <div>
               <h3 className="text-xl font-semibold mb-2">
@@ -71,7 +75,11 @@ const BlogPage = () => {
       </div>
 
       {/* Newsletter Subscription */}
-      <div className="mt-8 p-6 bg-gray-100 rounded-lg text-center">
+      <div
+        className={`mt-8 p-6 max-w-lg mx-auto my-4 lg:my-6 rounded-lg text-center ${
+          theme === "light" ? "bg-gray-100" : "bg-gray-800 text-white"
+        }`}
+      >
         <h3 className="text-lg font-semibold">Subscribe to Our Newsletter</h3>
         <p className="text-gray-600 mb-4">
           Get the latest updates and tips on micro-tasking.
@@ -81,7 +89,7 @@ const BlogPage = () => {
           placeholder="Enter your email"
           className="p-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <button className="mt-3 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+        <button className="mt-3 bg-orange-400 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-primaryColor transition">
           Subscribe
         </button>
       </div>

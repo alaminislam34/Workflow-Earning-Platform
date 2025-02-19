@@ -7,7 +7,7 @@ import { AuthContext } from "../../../Auth/AuthContext";
 
 const TaskListWorker = () => {
   const navigate = useNavigate();
-  const { tasksData, isLoading } = useContext(AuthContext);
+  const { tasksData, isLoading, theme } = useContext(AuthContext);
 
   // Fetch tasks with pagination
 
@@ -56,7 +56,9 @@ const TaskListWorker = () => {
                 data-aos="fade-up"
                 data-aos-anchor-placement="center-bottom"
                 key={task._id}
-                className="card bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:-translate-y-1 duration-300"
+                className={`card shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:-translate-y-1 duration-300 ${
+                  theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+                }`}
               >
                 {/* Image Section */}
                 <div className="relative h-48">
@@ -91,25 +93,23 @@ const TaskListWorker = () => {
 
                     {/* Buyer Name */}
                     <div className="grid grid-cols-5">
-                      <p className="font-medium text-gray-800 text-sm col-span-3">
-                        Buyer:
-                      </p>
-                      <p className="text-gray-700 mb-2 col-span-2">
+                      <p className="font-medium  text-sm col-span-3">Buyer:</p>
+                      <p className="text-gray-500 mb-2 col-span-2">
                         {task.buyer_name}
                       </p>
                     </div>
 
                     {/* Completion Date */}
                     <div className="grid grid-cols-5">
-                      <p className="font-medium text-gray-800 text-sm col-span-3">
+                      <p className="font-medium  text-sm col-span-3">
                         Completion Date:
                       </p>
-                      <p className="text-gray-700 mb-2 col-span-2">
+                      <p className="text-gray-500 mb-2 col-span-2">
                         <span
                           className={`${
                             new Date(task.completion_date) < new Date()
                               ? "text-red-500"
-                              : "text-gray-700"
+                              : "text-gray-500"
                           }`}
                         >
                           {new Date(task.completion_date).toLocaleDateString()}
@@ -119,24 +119,24 @@ const TaskListWorker = () => {
 
                     {/* Payable Amount */}
                     <div className="grid grid-cols-5">
-                      <p className="font-medium text-gray-800 text-sm col-span-3">
+                      <p className="font-medium  text-sm col-span-3">
                         Payable Amount:
                       </p>
-                      <p className="text-gray-700 mb-2 col-span-2">
+                      <p className="text-gray-500 mb-2 col-span-2">
                         ${task.payable_amount}
                       </p>
                     </div>
 
                     {/* Required Workers */}
                     <div className="grid grid-cols-5">
-                      <p className="font-medium text-gray-800 text-sm col-span-3">
+                      <p className="font-medium  text-sm col-span-3">
                         Required Workers:
                       </p>
                       <p
                         className={` mb-4 col-span-2 ${
                           task.required_workers <= 0
                             ? "text-red-500"
-                            : "text-gray-700"
+                            : "text-gray-500"
                         }`}
                       >
                         {task.required_workers}
@@ -150,7 +150,7 @@ const TaskListWorker = () => {
                       new Date(task.completion_date) < new Date() ||
                       task.required_workers <= 0
                     }
-                    className={`w-full text-white bg-btnColor hover:bg-primaryColor btn ${
+                    className={`w-full text-white bg-btnColor hover:bg-primaryColor btn cursor-pointer ${
                       new Date(task.completion_date) < new Date() ||
                       task.required_workers <= 0
                         ? "bg-gray-400 cursor-not-allowed"

@@ -6,13 +6,21 @@ import {
 } from "@mui/material";
 import { MdExpandMore } from "react-icons/md";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import { useContext } from "react";
+import { AuthContext } from "../../../Auth/AuthContext";
 
 const Accordion2 = () => {
+  const { theme } = useContext(AuthContext);
   return (
     <div className="space-y-4 p-4 rounded-lg">
       <SectionTitle Title={"Frequently Asked Questions ? "} />
       {/* accordion one */}
-      <Accordion className="shadow-md border border-primaryColor rounded-lg bg-white">
+      <Accordion
+        sx={{
+          backgroundColor: theme === "light" ? "white" : "#1F2937",
+          color: theme === "light" ? "#000000" : "#ffffff",
+        }}
+      >
         <AccordionSummary
           expandIcon={<MdExpandMore />}
           aria-controls="panel1-content"
@@ -30,7 +38,12 @@ const Accordion2 = () => {
         </AccordionDetails>
       </Accordion>
       {/* accordion two */}
-      <Accordion className="shadow-md border border-primaryColor bg-white">
+      <Accordion
+        sx={{
+          backgroundColor: theme === "light" ? "white" : "#1F2937",
+          color: theme === "light" ? "#000000" : "#ffffff",
+        }}
+      >
         <AccordionSummary
           expandIcon={<MdExpandMore />}
           aria-controls="panel2-content"
@@ -47,7 +60,12 @@ const Accordion2 = () => {
         </AccordionDetails>
       </Accordion>
       {/* accordion three */}
-      <Accordion className="shadow-md border border-primaryColor bg-white">
+      <Accordion
+        sx={{
+          backgroundColor: theme === "light" ? "white" : "#1F2937",
+          color: theme === "light" ? "#000000" : "#ffffff",
+        }}
+      >
         <AccordionSummary
           expandIcon={<MdExpandMore />}
           aria-controls="panel3-content"
@@ -64,7 +82,12 @@ const Accordion2 = () => {
         </AccordionDetails>
       </Accordion>
       {/* accordion four */}
-      <Accordion className="shadow-md border border-primaryColor bg-white">
+      <Accordion
+        sx={{
+          backgroundColor: theme === "light" ? "white" : "#1F2937",
+          color: theme === "light" ? "#000000" : "#ffffff",
+        }}
+      >
         <AccordionSummary
           expandIcon={<MdExpandMore />}
           aria-controls="panel4-content"
@@ -80,7 +103,12 @@ const Accordion2 = () => {
         </AccordionDetails>
       </Accordion>
       {/* accordion five */}
-      <Accordion className="shadow-md border border-primaryColor bg-white">
+      <Accordion
+        sx={{
+          backgroundColor: theme === "light" ? "white" : "#1F2937",
+          color: theme === "light" ? "#000000" : "#ffffff",
+        }}
+      >
         <AccordionSummary
           expandIcon={<MdExpandMore />}
           aria-controls="panel5-content"
@@ -97,7 +125,12 @@ const Accordion2 = () => {
         </AccordionDetails>
       </Accordion>
       {/* accordion six */}
-      <Accordion className="shadow-md border border-primaryColor bg-white">
+      <Accordion
+        sx={{
+          backgroundColor: theme === "light" ? "white" : "#1F2937",
+          color: theme === "light" ? "#000000" : "#ffffff",
+        }}
+      >
         <AccordionSummary
           expandIcon={<MdExpandMore />}
           aria-controls="panel6-content"

@@ -47,7 +47,7 @@ const BuyerChart = ({ totalTasks, completeTask, userCoins, totalPayments }) => {
         className=""
       >
         {/* Workers and Buyers Chart */}
-        <div className="bg-white lg:p-6 rounded-lg shadow-lg mb-8 flex flex-col md:flex-row justify-around items-center">
+        <div className="lg:p-6 rounded-lg shadow-lg mb-8 flex flex-col md:flex-row justify-around items-center">
           <div>
             <h2 className="text-base lg:text-lg font-medium mb-4 text-center">
               Workers and Buyers Overview

@@ -62,7 +62,7 @@ const WithDrawals = () => {
   }, [currentUser]);
 
   return (
-    <div className="min-h-screen py-8 bg-gradient-to-r from-orange-50 via-orange-100 to-orange-50">
+    <div className="min-h-screen py-8 ">
       <Helmet>
         <title>Withdrawals Request || Worker</title>
       </Helmet>
@@ -71,18 +71,18 @@ const WithDrawals = () => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-10 space-y-8 border-t-4 border-orange-500"
+        className="max-w-4xl mx-auto  shadow-xl rounded-xl p-10 space-y-8 border-t-4 border-orange-500"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div className="text-center sm:text-left">
-            <p className="text-sm lg:text-base text-gray-700">
+            <p className="text-sm lg:text-base text-gray-500">
               Total Coins:{" "}
               <span className="text-orange-600">{currentUser?.coins}</span>{" "}
               coins
             </p>
           </div>
           <div className="text-center sm:text-left">
-            <p className="text-sm lg:text-base text-gray-700">
+            <p className="text-sm lg:text-base text-gray-500">
               Equivalent Withdrawal Amount:{" "}
               <span className="text-orange-600">
                 ${(currentUser?.coins / 20).toFixed(2)}

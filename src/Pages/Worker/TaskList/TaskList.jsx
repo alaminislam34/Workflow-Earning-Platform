@@ -3,7 +3,7 @@ import TaskListWorker from "./TaskListWorker";
 
 const TaskList = () => {
   return (
-    <div>
+    <div className="px-2">
       <Helmet>
         <title>All Tasks </title>
       </Helmet>

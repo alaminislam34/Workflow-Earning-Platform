@@ -1,14 +1,16 @@
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 // import SectionTitle from "../../Components/SectionTitle/SectionTitle";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import { AuthContext } from "../../../Auth/AuthContext";
 
 const Testimonial = () => {
   const [clients, setClients] = useState([]);
+  const { theme } = useContext(AuthContext);
   const [sliderRef, sliderInstance] = useKeenSlider({
     loop: true,
     mode: "free-snap",
@@ -72,17 +74,21 @@ const Testimonial = () => {
       {clients.length > 0 ? (
         <section
           ref={sliderRef}
-          className="keen-slider"
+          className="keen-slider py-4"
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
         >
           {clients.map((client, index) => (
             <div
-              style={{ background: "#ffffff", height: "300px" }}
+              style={{ height: "300px" }}
               key={index}
-              className={`keen-slider__slide number-slide${
+              className={`${
+                theme === "light"
+                  ? "bg-white shadow-md"
+                  : "bg-gray-800 text-white"
+              } keen-slider__slide number-slide${
                 index + 1
-              } rounded-xl border text-center flex flex-col justify-center items-center p-4 space-y-3`}
+              } rounded-xl text-center flex flex-col justify-center items-center p-4 space-y-3`}
             >
               <img
                 className="w-16 h-16 rounded-full border-2 border-blue-500 object-cover bg-cover bg-center"

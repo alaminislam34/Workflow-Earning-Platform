@@ -53,7 +53,7 @@ const DashboardHomeTitle = () => {
       <p className="text-base font-semibold mt-4">
         <span>{greeting}</span>, <span>{currentUser?.name}!!</span>
       </p>
-      <p className="text-sm text-gray-600 mt-2">{message}</p>
+      <p className="text-sm text-gray-400 mt-2">{message}</p>
     </div>
   );
 };
