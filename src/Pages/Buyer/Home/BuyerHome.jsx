@@ -13,7 +13,7 @@ import DashboardHomeTitle from "../../../Components/DashboardTitle/DashboardHome
 import DashboardTitle from "../../../Components/DashboardTitle/DashboardTitle";
 
 const BuyerHome = () => {
-  const { user, currentUser } = useContext(AuthContext);
+  const { user, currentUser, setReview } = useContext(AuthContext);
   const { mutate } = useUpdateCoin();
   const [selectedSubmission, setSelectedSubmission] = useState(null);
 
@@ -35,6 +35,7 @@ const BuyerHome = () => {
       const res = await axiosInstance.get(
         `/submissions?b_email=${user?.email}`
       );
+      setReview(res.data.filter((task) => task.status == "pending"));
       return res.data;
     },
     enabled: !!user?.email,
@@ -126,7 +127,6 @@ const BuyerHome = () => {
       .filter((pay) => pay.status === "approved")
       .reduce((sum, payable) => sum + parseInt(payable.payable_amount) || 0, 0)
   );
-  console.log(pendingTasks);
   return (
     <div className="md:p-5">
       <Helmet>

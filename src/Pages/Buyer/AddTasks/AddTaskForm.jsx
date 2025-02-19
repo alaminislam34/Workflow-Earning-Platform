@@ -14,7 +14,7 @@ const AddTaskForm = ({ userCoins }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
-  const { user } = useContext(AuthContext);
+  const { user, refetch } = useContext(AuthContext);
 
   const handleImageUpload = async (imageFile) => {
     const formData = new FormData();
@@ -99,6 +99,7 @@ const AddTaskForm = ({ userCoins }) => {
         );
         // updateUserCoins(userCoins - totalPayableAmount);
         reset();
+        refetch();
         setUploadedImageUrl("");
       }
     } catch (error) {
@@ -255,7 +256,7 @@ const AddTaskForm = ({ userCoins }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-btnColor hover:bg-primaryColor text-white py-3 px-5 rounded-lg font-semibold shadow-md hover:shadow-lg duration-300"
+        className="w-full cursor-pointer bg-btnColor hover:bg-primaryColor text-white py-3 px-5 rounded-lg font-semibold shadow-md hover:shadow-lg duration-300"
       >
         Add Task
       </button>

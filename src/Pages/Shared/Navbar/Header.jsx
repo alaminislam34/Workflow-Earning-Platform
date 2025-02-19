@@ -1,9 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../../Auth/AuthContext";
-import { signOut } from "firebase/auth";
-import { toast, ToastContainer } from "react-toastify";
-import { auth } from "../../../Firebase/firebase.config";
+import { ToastContainer } from "react-toastify";
 import logo from "../../../assets/logos/brandLogo.jpg";
 import { RxCross2 } from "react-icons/rx";
 import { ImCoinDollar } from "react-icons/im";
@@ -14,7 +12,7 @@ import { IoMdLogOut } from "react-icons/io";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, currentUser } = useContext(AuthContext);
+  const { user, currentUser, handleLogout } = useContext(AuthContext);
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
@@ -33,20 +31,6 @@ const Header = () => {
     window.addEventListener("mousedown", handleClickOutside);
     return () => window.removeEventListener("mousedown", handleClickOutside);
   }, [currentUser, user, menuRef, setIsMenuOpen]);
-
-  // handle logout
-  const handleLogout = () => {
-    toast.dismiss();
-    signOut(auth)
-      .then(() => {
-        toast.success("Sign out confirmed");
-        localStorage.removeItem("token");
-      })
-      .catch((error) => {
-        console.error("Sign out failed:", error.message);
-        toast.error("Failed to sign out");
-      });
-  };
 
   return (
     <nav className="bg-white shadow-md fixed top-0 w-full z-50">

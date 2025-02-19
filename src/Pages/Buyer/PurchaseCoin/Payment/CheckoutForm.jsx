@@ -13,7 +13,7 @@ const CheckoutForm = () => {
   const elements = useElements();
   const location = useLocation();
   const { coins, price } = location.state || {};
-  const { user, currentUser } = useContext(AuthContext);
+  const { user, currentUser, refetch } = useContext(AuthContext);
   const [isProcessing, setIsProcessing] = useState(false);
   const navigate = useNavigate();
 
@@ -113,6 +113,7 @@ const CheckoutForm = () => {
     } finally {
       // Clear the card input and reset processing state
       card.clear();
+      refetch();
       setIsProcessing(false);
     }
   };
@@ -162,7 +163,7 @@ const CheckoutForm = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className={`w-full py-3 bg-btnColor text-white font-semibold rounded-lg shadow-md hover:bg-primaryColor transition-all disabled:opacity-50 ${
+            className={`w-full py-3 cursor-pointer bg-btnColor text-white font-semibold rounded-lg shadow-md hover:bg-primaryColor transition-all disabled:opacity-50 ${
               !stripe || !clientSecret || isProcessing
                 ? "cursor-not-allowed"
                 : ""

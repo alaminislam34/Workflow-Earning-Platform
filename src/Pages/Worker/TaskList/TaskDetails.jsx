@@ -66,44 +66,64 @@ const TaskDetails = () => {
       });
     }
   };
-
+  console.log(data);
   return (
     <div className="md:p-6">
-      {/* Task Details Section */}
-      <div
-        data-aos="fade-up"
-        data-aos-anchor-placement="center-bottom"
-        className="bg-gradient-to-br from-orange-50 to-yellow-100 p-4 lg:p-8 rounded-lg shadow-lg mb-8"
-      >
-        <h2 className="text-3xl font-bold mb-6 text-orange-700 border-b-2 pb-2">
-          Task Details
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <p className="text-lg">
-            <strong className="text-orange-600">Required Workers:</strong>{" "}
-            {data.required_workers}
-          </p>
-          <p className="text-lg">
-            <strong className="text-orange-600">Task Title:</strong>{" "}
-            {data.task_title}
-          </p>
-          <p className="text-lg">
-            <strong className="text-orange-600">Payable Amount:</strong> ${" "}
-            {data.payable_amount}
-          </p>
-          <p className="text-lg">
-            <strong className="text-orange-600">Buyer Name:</strong>{" "}
-            {data.buyer_name}
-          </p>
-          <p className="text-lg">
-            <strong className="text-orange-600">Buyer Email:</strong>{" "}
-            {data.buyer_email}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-gradient-to-br from-orange-50 to-yellow-100">
+        <div>
+          <img src={data.task_image_url} alt="" />
+        </div>
+        {/* Task Details Section */}
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          className="p-4 lg:p-8 rounded-lg mb-8"
+        >
+          <h2 className="text-lg lg:text-xl font-semibold mb-6 text-orange-700 border-b border-gray-500 pb-2">
+            Task Details
+          </h2>
+          <div className="space-y-2">
+            <p className="text-sm lg:text-base flex *:flex-1">
+              <p className="">Required Workers</p>
+              <p className="text-gray-600 text-xs lg:text-sm">
+                : {data.required_workers}
+              </p>
+            </p>
+            <p className="text-sm lg:text-base flex *:flex-1">
+              <p className="">Task Title</p>
+              <p className="text-gray-600 text-xs lg:text-sm">
+                : {data.task_title}
+              </p>
+            </p>
+            <p className="text-sm lg:text-base flex *:flex-1">
+              <p className="">Payable Amount</p>
+
+              <p className="text-gray-600 text-xs lg:text-sm">
+                : {data.payable_amount}
+              </p>
+            </p>
+            <p className="text-sm lg:text-base flex *:flex-1">
+              <p className="">Buyer Name</p>
+              <p className="text-gray-600 text-xs lg:text-sm">
+                : {data.buyer_name}
+              </p>
+            </p>
+            <p className="text-sm lg:text-base flex *:flex-1">
+              <p className="">Buyer Email</p>
+              <p className="text-gray-600 text-xs lg:text-sm">
+                : {data.buyer_email}
+              </p>
+            </p>
+          </div>
+        </div>
+        <div className="lg:col-span-2 p-2 lg:p-4">
+          <p className="text-sm lg:text-base text-gray-700">
+            <p className="">Description</p>{" "}
+            <p className="text-gray-600 text-xs lg:text-sm">
+              {data.task_detail || "No description available."}
+            </p>
           </p>
         </div>
-        <p className="mt-6 text-lg text-gray-700">
-          <strong className="text-orange-600">Description:</strong>{" "}
-          {data.task_detail || "No description available."}
-        </p>
       </div>
 
       {/* Submission Form Section */}
@@ -119,7 +139,7 @@ const TaskDetails = () => {
           <div className="mb-6">
             <label
               htmlFor="submissionDetails"
-              className="block text-lg font-medium text-gray-700 mb-2"
+              className="block text-sm lg:text-base font-medium text-gray-700 mb-2"
             >
               Submission Details
             </label>
@@ -136,7 +156,7 @@ const TaskDetails = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-3 bg-orange-600 text-white text-lg font-semibold rounded-lg hover:bg-orange-700 transition-all"
+            className="w-full py-3 bg-orange-600 text-white text-sm lg:text-base font-semibold rounded-lg hover:bg-orange-700 transition-all"
           >
             Submit Work
           </button>

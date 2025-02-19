@@ -218,13 +218,13 @@ const MyTaskTable = ({ userCoins }) => {
                       <>
                         <button
                           onClick={() => handleUpdate(editingTask)}
-                          className="bg-green-500 text-white py-1 px-2 rounded mr-2"
+                          className="bg-green-500 text-white py-1 px-2 rounded mr-2 cursor-pointer"
                         >
                           Save
                         </button>
                         <button
                           onClick={() => setEditingTask(null)}
-                          className="bg-gray-500 text-white py-1 px-2 rounded"
+                          className="bg-gray-500 text-white py-1 px-2 rounded cursor-pointer"
                         >
                           Cancel
                         </button>
@@ -233,13 +233,13 @@ const MyTaskTable = ({ userCoins }) => {
                       <>
                         <button
                           onClick={() => setEditingTask(task)}
-                          className="bg-blue-500 text-white py-1 px-2 rounded mr-2"
+                          className="bg-blue-500 text-white py-1 px-2 rounded mr-2 cursor-pointer"
                         >
                           <FaPen />
                         </button>
                         <button
                           onClick={() => handleDelete(task)}
-                          className="bg-red-500 text-white py-1 px-2 rounded"
+                          className="bg-red-500 text-white py-1 px-2 rounded cursor-pointer"
                         >
                           <AiFillDelete />
                         </button>

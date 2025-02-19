@@ -1,9 +1,10 @@
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
 import useAxiosPublic from "../Axios/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../Axios/useAxiosSecure";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -14,6 +15,7 @@ const Auth = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("");
   const [withdrawal, setWithdrawal] = useState([]);
+  const [review, setReview] = useState([]);
   const axiosPublic = useAxiosPublic();
   const [navOpen, setNavOpen] = useState(
     () => JSON.parse(localStorage.getItem("navOpen")) ?? true
@@ -65,7 +67,20 @@ const Auth = ({ children }) => {
     },
     enabled: !!user?.email,
   });
-  console.log(user);
+
+  // handle logout
+  const handleLogout = () => {
+    toast.dismiss();
+    signOut(auth)
+      .then(() => {
+        toast.success("Sign out confirmed");
+        localStorage.removeItem("token");
+      })
+      .catch((error) => {
+        console.error("Sign out failed:", error.message);
+        toast.error("Failed to sign out");
+      });
+  };
 
   const info = {
     user,
@@ -83,6 +98,9 @@ const Auth = ({ children }) => {
     setNavOpen,
     setWithdrawal,
     withdrawal,
+    review,
+    setReview,
+    handleLogout,
   };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;

@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../Axios/useAxiosSecure";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { MdOutlineCancel } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 import { PiCoins } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
@@ -20,9 +20,13 @@ import DropdownSidebar from "../../../Components/DropdownSidebar/DropdownSidebar
 const DashboardNavbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [show, setShow] = useState(false);
-  const { currentUser, setNavOpen, navOpen } = useContext(AuthContext);
+  const { currentUser, setNavOpen, navOpen, review, handleLogout } =
+    useContext(AuthContext);
+  console.log(review);
+  // console.log(currentUser);
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("navOpen", JSON.stringify(navOpen));
@@ -138,11 +142,11 @@ const DashboardNavbar = () => {
               } right-0 bg-white shadow-xl rounded-lg`}
             >
               <ul className="text-sm text-gray-600 font-medium">
-                <li onClick={() => setOpen(false)} className="">
-                  <NavLink className="flex items-center gap-2">
+                <li onClick={() => setOpen(false)} className="pb-2">
+                  <p className="flex items-center gap-2 px-3 py-2">
                     <PiCoins className="text-lg" /> Coins:{" "}
                     {currentUser?.coins ? currentUser.coins : 0}
-                  </NavLink>
+                  </p>
                 </li>
                 <li
                   onClick={() => setOpen(false)}
@@ -163,14 +167,17 @@ const DashboardNavbar = () => {
 
                 <li
                   onClick={handleClose}
-                  className="bg-red-100 hover:bg-red-200 rounded-md px-3 py-2"
+                  className="bg-red-100 hover:bg-red-200"
                 >
-                  <NavLink
-                    to="logout"
-                    className="flex items-center gap-2 text-red-600"
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      navigate("/");
+                    }}
+                    className="flex items-center gap-2 text-red-600 cursor-pointer px-3 py-2 w-full"
                   >
                     <IoIosLogOut /> Logout
-                  </NavLink>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -218,8 +225,12 @@ const DashboardNavbar = () => {
                       <span className="loading loading-dots loading-md"></span>
                     </div>
                   ) : (
+                    // Notifications List
                     <div className="p-2">
-                      {notification?.length > 0 ? (
+                      {currentUser?.role === "Buyer" ? (
+                        <div></div>
+                      ) : currentUser?.role === "Worker" &&
+                        notification?.length > 0 ? (
                         <ul className="flex flex-col gap-2">
                           {notification?.map((m) => (
                             <li
