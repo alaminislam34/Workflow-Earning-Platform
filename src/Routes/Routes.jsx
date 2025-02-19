@@ -26,6 +26,8 @@ import PageLoader from "../Pages/PageLoader/PageLoader";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import ProfileInfo from "../Pages/Worker/Profile/ProfileInfo";
 import Help from "../Pages/Shared/Help/Help";
+import BlogPage from "../Pages/Shared/Blog/Blog";
+import TaskDetailsPage from "../Pages/Home/Tasks/TaskDetailsPage";
 
 export const router = createBrowserRouter([
   // main layout
@@ -49,6 +51,15 @@ export const router = createBrowserRouter([
       {
         path: "help",
         element: <Help />,
+      },
+      {
+        path: "blog",
+        element: <BlogPage />,
+      },
+      {
+        path: "taskDetailsPage/:id",
+        element: <TaskDetailsPage />,
+        loader: ({ params }) => axiosInstance(`/tasks/${params.id}`),
       },
       // Page not found component
       // ===============================================================================

@@ -7,6 +7,7 @@ import HowItWork from "../HowItWork/HowItWork";
 import { useContext } from "react";
 import { AuthContext } from "../../../Auth/AuthContext";
 import GetStarted from "../GetStarted/GetStarted";
+import Tasks from "../Tasks/Tasks";
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
@@ -19,6 +20,8 @@ const Home = () => {
       <div className="max-w-7xl mx-auto w-11/12">
         <br />
         <BestWorker />
+        <br />
+        <Tasks />
         <br />
         <Testimonial />
 
