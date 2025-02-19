@@ -104,7 +104,7 @@ const Login = () => {
         data-aos-anchor-placement="center-bottom"
         className={`${
           theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-        }shadow-xl rounded-lg p-8 w-full max-w-md`}
+        } shadow-xl rounded-lg p-8 w-full max-w-md`}
       >
         <h2 className="text-2xl font-bold text-center mb-6">Sign In</h2>
 
