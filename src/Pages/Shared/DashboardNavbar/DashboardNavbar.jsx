@@ -12,11 +12,12 @@ import axiosInstance from "../../../Axios/useAxiosSecure";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { MdOutlineCancel } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
-import { CiUser } from "react-icons/ci";
+import { CiDark, CiUser } from "react-icons/ci";
 import { PiCoins } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
 import DropdownSidebar from "../../../Components/DropdownSidebar/DropdownSidebar";
 import { GoHome } from "react-icons/go";
+import { BiMessageRounded } from "react-icons/bi";
 
 const DashboardNavbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -112,7 +113,11 @@ const DashboardNavbar = () => {
           </div>
         </div>
         {/* Dashboard navbar */}
-
+        <div>
+          <button>
+            <CiDark />
+          </button>
+        </div>
         {/* User Info and Notifications */}
         <div className="flex items-center gap-1.5 md:gap-4 lg:gap-3">
           <div className="text-right">
@@ -144,9 +149,12 @@ const DashboardNavbar = () => {
             >
               <ul className="text-sm text-gray-600 font-medium">
                 <li onClick={() => setOpen(false)} className="pb-2">
-                  <p className="flex items-center gap-2 px-3 py-2">
-                    <PiCoins className="text-lg" /> Coins:{" "}
-                    {currentUser?.coins ? currentUser.coins : 0}
+                  <p className="flex items-center justify-between gap-2 px-3 py-2">
+                    <span> Coins: </span>
+                    <span className="flex items-center gap-1">
+                      {currentUser?.coins ? currentUser.coins : 0}{" "}
+                      <PiCoins className="text-lg" />
+                    </span>
                   </p>
                 </li>
                 <li className="hover:bg-base-300">
@@ -168,6 +176,15 @@ const DashboardNavbar = () => {
                 >
                   <NavLink to="help" className="flex items-center gap-2">
                     <IoIosHelpCircleOutline className="text-lg" /> Help
+                  </NavLink>
+                </li>
+                <li
+                  onClick={() => setOpen(false)}
+                  className="hover:bg-base-300"
+                >
+                  <NavLink to="support" className="flex items-center gap-2">
+                    <BiMessageRounded />
+                    Support
                   </NavLink>
                 </li>
 
@@ -193,10 +210,10 @@ const DashboardNavbar = () => {
           <div className="relative">
             <button
               onClick={() => {
-                setShow(true);
+                setShow(!show);
                 setOpen(false);
               }}
-              className=""
+              className="flex justify-center items-center"
             >
               <IoIosNotificationsOutline className="text-xl cursor-pointer md:text-2xl text-gray-600 hover:text-primaryColor transition-colors duration-300" />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
@@ -300,7 +317,7 @@ const DashboardNavbar = () => {
         </div>
       </div>
       <div
-        className={`fixed transition-all duration-500 ease-in-out px-2 ${
+        className={`fixed transition-all duration-500 ease-in-out px-4 ${
           openNavbar
             ? "top-0 left-0 opacity-100"
             : "top-0 -left-20 opacity-0 pointer-events-none"

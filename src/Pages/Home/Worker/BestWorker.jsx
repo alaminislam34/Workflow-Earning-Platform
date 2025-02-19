@@ -2,10 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { FaCoins } from "react-icons/fa";
 import axiosInstance from "../../../Axios/useAxiosSecure";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Aos from "aos";
+import { AuthContext } from "../../../Auth/AuthContext";
 
 const BestWorker = () => {
+  const { theme } = useContext(AuthContext);
   const { data } = useQuery({
     queryKey: ["workers"],
     queryFn: async () => {
@@ -43,7 +45,9 @@ const BestWorker = () => {
               data-aos="fade-up"
               data-aos-anchor-placement="center-bottom"
               key={worker._id}
-              className="shadow-md p-4 border-t-4 rounded-xl border-primaryColor flex items-center gap-4 bg-white hover:bg-gray-100 hover:shadow-xl duration-500 focus:outline-none"
+              className={`shadow-xl p-4 border-t-4 rounded-xl border-primaryColor flex items-center gap-4  hover:shadow-xl duration-500 focus:outline-none ${
+                theme === "light" ? "bg-white" : "bg-gray-800"
+              }`}
             >
               <img
                 src={worker?.photo}
@@ -51,13 +55,13 @@ const BestWorker = () => {
                 className="w-16 h-16 rounded-full border-2 border-primaryColor object-cover"
               />
               <div className="flex flex-col justify-start text-left">
-                <h2 className="text-lg font-semibold text-gray-800">
+                <h2 className="text-lg font-semibold">
                   {worker.name || "Unknown Worker"}
                 </h2>
                 <p className="text-sm md:text-base text-primaryColor flex justify-start items-center text-left gap-2">
                   Coins:{" "}
                   <span
-                    className="font-bold"
+                    className="font-semibold"
                     title={`Coins available: ${worker.coins || 0}`}
                   >
                     {worker.coins || 0}

@@ -7,13 +7,13 @@ import DashboardTitle from "../../../Components/DashboardTitle/DashboardTitle";
 const AddNewTasks = () => {
   const { currentUser } = useContext(AuthContext);
   return (
-    <div className="px-2">
+    <div className="px-2 py-4">
       <Helmet>
         <title>Add Task || Buyer</title>
       </Helmet>
       <DashboardTitle title={"Add New Task"} />
 
-      <section className="w-11/12 mx-auto">
+      <section className="">
         <AddTaskForm userCoins={currentUser?.coins} />
       </section>
     </div>

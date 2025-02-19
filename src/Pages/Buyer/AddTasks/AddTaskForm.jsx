@@ -121,7 +121,7 @@ const AddTaskForm = ({ userCoins }) => {
       data-aos="fade-up"
       data-aos-anchor-placement="center-bottom"
       onSubmit={handleSubmit(onSubmit)}
-      className="p-8 m-4 max-w-4xl mx-auto w-full bg-white border-t-4 border-primaryColor shadow-xl rounded-lg space-y-6 "
+      className="p-4 lg:max-w-4xl mx-auto w-full bg-white border-t-4 border-primaryColor shadow-xl rounded-lg space-y-6"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
         {/* Task Title */}

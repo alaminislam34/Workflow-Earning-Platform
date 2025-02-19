@@ -29,7 +29,7 @@ const Main = () => {
       ) : (
         <div>
           <Header />
-          <div className="min-h-[80vh] mt-[56px] lg:mt-[56px] ">
+          <div className="min-h-[80vh] mt-[64px]">
             <Outlet />
           </div>
           <Footer />

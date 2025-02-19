@@ -170,7 +170,7 @@ const DropdownSidebar = ({ setOpenNavbar }) => {
           data-aos-anchor-placement="center-bottom"
         >
           {currentUser?.role === "Buyer" && (
-            <NavLink to="payment" className="flex items-center gap-3">
+            <NavLink to="payment" className="flex items-center gap-2">
               <GoHistory className="text-lg lg:text-xl" /> {"Payment History"}
             </NavLink>
           )}

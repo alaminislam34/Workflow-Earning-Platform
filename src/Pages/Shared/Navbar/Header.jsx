@@ -8,10 +8,12 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { RiMenu3Fill } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
+import { CiDark, CiLight } from "react-icons/ci";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, currentUser, handleLogout } = useContext(AuthContext);
+  const { user, currentUser, handleLogout, theme, toggleTheme } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
@@ -32,7 +34,11 @@ const Header = () => {
   }, [currentUser, user, menuRef, setIsMenuOpen]);
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 w-full z-50">
+    <nav
+      className={`shadow-md fixed top-0 w-full z-50 ${
+        theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+      }`}
+    >
       <div
         data-aos="fade-right"
         data-aos-anchor-placement="center-bottom"
@@ -69,6 +75,12 @@ const Header = () => {
               <NavLink to="/register" className="font-medium">
                 Register
               </NavLink>
+              <button
+                onClick={toggleTheme}
+                className="cursor-pointer p-2 rounded-full"
+              >
+                {theme === "light" ? <CiDark /> : <CiLight />}
+              </button>
               <a
                 href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-alaminislam34"
                 style={{ color: "#ffffff", transitionDuration: "0.2s" }}
@@ -83,22 +95,19 @@ const Header = () => {
 
           {user && (
             <>
-              <NavLink
-                to="/"
-                className="font-medium hover:text-primaryColor text-gray-600"
-              >
+              <NavLink to="/" className="font-medium hover:text-primaryColor ">
                 Home
               </NavLink>
 
               <NavLink
                 to="dashboard/profileInfo"
-                className="flex items-center hover:text-primaryColor text-gray-600 font-medium gap-2 py-2 "
+                className="flex items-center hover:text-primaryColor  font-medium gap-2 py-2 "
               >
                 Profile
               </NavLink>
               <NavLink
                 to="help"
-                className="flex items-center gap-2 hover:text-primaryColor text-gray-600"
+                className="flex items-center gap-2 hover:text-primaryColor font-medium"
               >
                 Help
               </NavLink>
@@ -110,7 +119,7 @@ const Header = () => {
                     ? "dashboard/taskList"
                     : "dashboard/addTask"
                 }
-                className="flex items-center font-medium hover:text-primaryColor py-2  text-gray-600 gap-2"
+                className="flex items-center font-medium hover:text-primaryColor py-2   gap-2"
               >
                 {currentUser?.role === "Admin" ? (
                   <span className="flex items-center gap-2">
@@ -128,11 +137,16 @@ const Header = () => {
               </NavLink>
               <NavLink
                 to={`/dashboard/${currentUser?.role}`}
-                className="hover:text-primaryColor text-gray-600 font-medium py-2  flex items-center gap-2"
+                className="hover:text-primaryColor  font-medium py-2  flex items-center gap-2"
               >
                 Dashboard
               </NavLink>
-
+              <button
+                onClick={toggleTheme}
+                className="cursor-pointer p-2 rounded-full"
+              >
+                {theme === "light" ? <CiDark /> : <CiLight />}
+              </button>
               <p className=" font-medium flex items-center gap-2 text-primaryColor pr-2">
                 <ImCoinDollar />{" "}
                 <span className="font-bold">
@@ -167,16 +181,24 @@ const Header = () => {
           )}
         </div>
 
-        <button
-          className="lg:hidden text-xl md:text-2xl py-1 px-2 h-10"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? (
-            <RxCross2 className="text-primaryColor font-bold" />
-          ) : (
-            <RiMenu3Fill className="text-primaryColor font-bold" />
-          )}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            onClick={toggleTheme}
+            className="cursor-pointer p-2 rounded-full"
+          >
+            {theme === "light" ? <CiDark /> : <CiLight />}
+          </button>
+          <button
+            className=" text-xl md:text-2xl py-1 px-2 h-10"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <RxCross2 className="text-primaryColor font-bold" />
+            ) : (
+              <RiMenu3Fill className="text-primaryColor font-bold" />
+            )}
+          </button>
+        </div>
       </div>
 
       <div
@@ -194,7 +216,7 @@ const Header = () => {
               <NavLink
                 onClick={() => setIsMenuOpen(false)}
                 to="/"
-                className="text-gray-600 font-medium w-full inline-block"
+                className=" font-medium w-full inline-block"
               >
                 Home
               </NavLink>
@@ -203,7 +225,7 @@ const Header = () => {
               <NavLink
                 onClick={() => setIsMenuOpen(false)}
                 to="/login"
-                className="text-gray-600 font-medium w-full inline-block"
+                className=" font-medium w-full inline-block"
               >
                 Login
               </NavLink>
@@ -212,11 +234,12 @@ const Header = () => {
               <NavLink
                 onClick={() => setIsMenuOpen(false)}
                 to="/register"
-                className="text-gray-600 font-medium w-full inline-block"
+                className=" font-medium w-full inline-block"
               >
                 Register
               </NavLink>
             </li>
+
             <li className="py-2 hover:bg-base-300">
               <a
                 onClick={() => setIsMenuOpen(false)}
@@ -255,7 +278,7 @@ const Header = () => {
               <li>
                 <NavLink
                   to="dashboard/profileInfo"
-                  className="flex items-center hover:text-primaryColor text-gray-600 font-medium gap-2 py-2 px-2"
+                  className="flex items-center hover:text-primaryColor  font-medium gap-2 py-2 px-2"
                 >
                   Profile
                 </NavLink>
@@ -269,7 +292,7 @@ const Header = () => {
                       ? "taskList"
                       : "addTask"
                   }
-                  className="flex items-center font-medium hover:text-primaryColor py-2 px-2 text-gray-600 gap-2"
+                  className="flex items-center font-medium hover:text-primaryColor py-2 px-2  gap-2"
                 >
                   {currentUser?.role === "Admin" ? (
                     <span className="flex items-center gap-2">
@@ -292,11 +315,12 @@ const Header = () => {
                 {/* Dashboard */}
                 <NavLink
                   to={`/dashboard/${currentUser?.role}`}
-                  className="text-gray-600 font-medium py-2 flex items-center gap-2 rounded-md"
+                  className=" font-medium py-2 flex items-center gap-2 rounded-md"
                 >
                   Dashboard
                 </NavLink>
               </li>
+
               <li className="w-full bg-red-100 hover:bg-red-200 py-2 px-3">
                 {/* Profile & Logout */}
 
@@ -316,7 +340,7 @@ const Header = () => {
                   rel="noopener noreferrer"
                   className="text-sm"
                 >
-                  Join as Developer
+                  Join as Dev.
                 </a>
               </li>
             </ul>

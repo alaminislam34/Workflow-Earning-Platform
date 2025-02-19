@@ -12,6 +12,7 @@ export const AuthContext = createContext();
 const Auth = ({ children }) => {
   const [user, setUser] = useState(null);
   const [coin, setCoin] = useState(0);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "night");
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("");
   const [withdrawal, setWithdrawal] = useState([]);
@@ -20,6 +21,16 @@ const Auth = ({ children }) => {
   const [navOpen, setNavOpen] = useState(
     () => JSON.parse(localStorage.getItem("navOpen")) ?? true
   );
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setLoading(true);
@@ -119,6 +130,8 @@ const Auth = ({ children }) => {
     tasksData,
     isLoading,
     taskRefetch,
+    toggleTheme,
+    theme,
   };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
