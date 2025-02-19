@@ -66,7 +66,7 @@ const Help = () => {
       <div className="mt-6">
         <h3 className="text-lg font-semibold">Quick Video Guide</h3>
         <iframe
-          className="w-full h-56 rounded-lg mt-2"
+          className="w-full h-[300px] rounded-lg mt-2"
           src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
           title="How to use the platform"
           allowFullScreen

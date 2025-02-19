@@ -46,6 +46,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: "help",
+        element: <Help />,
+      },
       // Page not found component
       // ===============================================================================
       {
@@ -180,10 +184,6 @@ export const router = createBrowserRouter([
       {
         path: "profileInfo",
         element: <ProfileInfo />,
-      },
-      {
-        path: "help",
-        element: <Help />,
       },
       {
         path: "/dashboard",

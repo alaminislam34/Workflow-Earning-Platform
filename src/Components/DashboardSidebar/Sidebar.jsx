@@ -52,6 +52,7 @@ const Sidebar = () => {
             <GoHome className="text-lg lg:text-xl" /> {navOpen && "Dashboard"}
           </NavLink>
         </li>
+        {/* {navOpen && <WorkerProfile />} */}
         <li
           data-aos="fade-up"
           data-aos-delay="600"

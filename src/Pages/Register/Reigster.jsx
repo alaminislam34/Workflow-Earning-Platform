@@ -335,7 +335,7 @@ const Register = () => {
               Login
             </a>
           </p>
-          <ToastContainer />
+          <ToastContainer autoClose={3000} hideProgressBar={true} />
         </div>
       </div>
     </div>

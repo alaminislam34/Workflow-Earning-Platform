@@ -79,7 +79,7 @@ const ManageTasks = () => {
   }, [data, currentTasks]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-2">
       <Helmet>
         <title>Manage Task || Admin</title>
       </Helmet>
@@ -89,11 +89,13 @@ const ManageTasks = () => {
         data-aos-anchor-placement="center-bottom"
         className="mb-6"
       >
-        <div className="flex gap-4 items-center my-2 px-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-700">
+        <div className="flex gap-4 items-center my-2">
+          <h2 className="text-base lg:text-lg font-medium text-gray-700">
             Total Tasks:
           </h2>
-          <span className="text-lg md:text-xl font-bold">{data?.length}</span>
+          <span className="text-base lg:text-lg font-medium">
+            {data?.length}
+          </span>
         </div>
       </div>
 

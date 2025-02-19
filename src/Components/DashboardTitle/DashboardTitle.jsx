@@ -6,9 +6,7 @@ const DashboardTitle = ({ title }) => {
       data-aos-anchor-placement="center-bottom"
       className="pb-4"
     >
-      <h1 className="text-xl md:text-2xl lg:text-4xl text-center font-bold pb-4">
-        {title}
-      </h1>
+      <h1 className="text-xl lg:text-2xl font-bold">{title}</h1>
     </div>
   );
 };

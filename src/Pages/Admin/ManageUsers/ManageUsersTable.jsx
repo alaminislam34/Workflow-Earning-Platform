@@ -121,7 +121,7 @@ const ManageUsersTable = ({ data, refetch }) => {
         <table className="table w-full text-xs">
           <thead className="bg-gray-100 text-gray-700 truncate">
             <tr>
-              <th className=" text-left">#</th>
+              <th className=" text-left">Serial</th>
               <th className=" text-left">Photo</th>
               <th className=" text-left">Name</th>
               <th className=" text-left">Email</th>
@@ -148,12 +148,14 @@ const ManageUsersTable = ({ data, refetch }) => {
                 <td className="">{user.email}</td>
                 <td className="">
                   {user.role === "Admin" ? (
-                    <span className="text-green-500 font-semibold">Admin</span>
+                    <span className="text-primaryColor font-semibold">
+                      Admin
+                    </span>
                   ) : (
                     <select
                       defaultValue={user.role}
                       onChange={(e) => updateRole(user._id, e.target.value)}
-                      className="border p-2 rounded-md shadow-sm"
+                      className="p-1 border-none focus:border-none rounded-md shadow-sm"
                     >
                       <option value="Admin">Admin</option>
                       <option value="Buyer">Buyer</option>

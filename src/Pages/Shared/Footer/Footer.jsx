@@ -1,5 +1,4 @@
-import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
-import logo from "../../../assets/logos/logo.png";
+import { FiFacebook, FiGithub, FiLinkedin } from "react-icons/fi";
 
 const Footer = () => {
   return (
@@ -16,38 +15,39 @@ const Footer = () => {
       >
         {/* Logo Section */}
         <div className="mb-4 md:mb-0 flex items-center gap-2">
-          <img src={logo} alt="logo" className="w-16 md:w-20" />
-          <h1 className="text-2xl font-bold">WorkFlow</h1>
+          <h1 className="text-xl lg:text-2xl font-bold text-primaryColor">
+            WorkFlow
+          </h1>
         </div>
 
         {/* Social Media Icons */}
-        <div className="flex space-x-6">
+        <div className="flex space-x-4">
           <a
-            href="https://facebook.com/your-profile"
+            href="https://www.facebook.com/ar.alamin34"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white transition"
             aria-label="Facebook"
           >
-            <FaFacebookF size={24} />
+            <FiFacebook size={24} />
           </a>
           <a
-            href="https://linkedin.com/in/your-profile"
+            href="https://www.linkedin.com/in/alamin34/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white transition"
             aria-label="LinkedIn"
           >
-            <FaLinkedinIn size={24} />
+            <FiLinkedin size={24} />
           </a>
           <a
-            href="https://github.com/your-profile"
+            href="https://github.com/alaminislam34"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white transition"
             aria-label="GitHub"
           >
-            <FaGithub size={24} />
+            <FiGithub size={24} />
           </a>
         </div>
       </div>
