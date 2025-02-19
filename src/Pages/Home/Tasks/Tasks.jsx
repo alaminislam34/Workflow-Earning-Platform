@@ -16,7 +16,12 @@ const Tasks = () => {
 
   return (
     <div>
-      <SectionTitle Title={"Our Top Paid Tasks"} />
+      <SectionTitle
+        Title={"Our Top Paid Tasks"}
+        description={
+          "Discover high-paying micro-tasks and maximize your earnings effortlessly!"
+        }
+      />
       {isLoading ? (
         <div className="flex justify-center">
           <span className="loading loading-spinner loading-lg"></span>

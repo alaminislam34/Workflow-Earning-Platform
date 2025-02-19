@@ -5,10 +5,12 @@ import {
   Typography,
 } from "@mui/material";
 import { MdExpandMore } from "react-icons/md";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const Accordion2 = () => {
   return (
     <div className="space-y-4 p-4 rounded-lg">
+      <SectionTitle Title={"Frequently Asked Questions ? "} />
       {/* accordion one */}
       <Accordion className="shadow-md border border-primaryColor rounded-lg bg-white">
         <AccordionSummary
