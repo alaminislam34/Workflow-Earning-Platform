@@ -25,6 +25,7 @@ import PaymentStripe from "../Pages/Buyer/PurchaseCoin/Payment/PaymentStripe";
 import PageLoader from "../Pages/PageLoader/PageLoader";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import ProfileInfo from "../Pages/Worker/Profile/ProfileInfo";
+import Help from "../Pages/Shared/Help/Help";
 
 export const router = createBrowserRouter([
   // main layout
@@ -179,6 +180,10 @@ export const router = createBrowserRouter([
       {
         path: "profileInfo",
         element: <ProfileInfo />,
+      },
+      {
+        path: "help",
+        element: <Help />,
       },
       {
         path: "/dashboard",

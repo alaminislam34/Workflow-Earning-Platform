@@ -19,7 +19,7 @@ const useAuth = () => {
       .then(async (res) => {
         const user = res.user;
         const postUser = {
-          name: user.displayName,
+          name: user?.displayName,
           email: user.email,
           photo: user.photoURL,
           role: "Worker",

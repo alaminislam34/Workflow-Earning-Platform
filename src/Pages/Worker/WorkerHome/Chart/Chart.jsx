@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { FaCoins } from "react-icons/fa";
 import { MdPendingActions } from "react-icons/md";
 import { RiFileList2Fill } from "react-icons/ri";
@@ -15,6 +16,7 @@ import {
   AreaChart,
   Area, // Import Cell
 } from "recharts";
+import { AuthContext } from "../../../../Auth/AuthContext";
 
 const DashboardStats = ({
   approvedSubmissions,
@@ -22,6 +24,7 @@ const DashboardStats = ({
   totalPending,
   totalEarning,
 }) => {
+  const { currentUser } = useContext(AuthContext);
   const formatDate = (date) => {
     return new Date(date).toLocaleString("en-US", {
       month: "short",
@@ -74,10 +77,10 @@ const DashboardStats = ({
         <div className="bg-green-100 p-4 rounded shadow text-center relative">
           <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
             <FaCoins />
-            Total Earnings
+            Total Coins
           </h3>
           <p className="text-base lg:text-lg text-left font-semibold">
-            ${totalEarning}
+            ${currentUser?.coins}
           </p>
         </div>
       </div>

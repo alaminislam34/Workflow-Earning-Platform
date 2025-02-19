@@ -16,6 +16,7 @@ import { CiUser } from "react-icons/ci";
 import { PiCoins } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
 import DropdownSidebar from "../../../Components/DropdownSidebar/DropdownSidebar";
+import { GoHome } from "react-icons/go";
 
 const DashboardNavbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -148,6 +149,11 @@ const DashboardNavbar = () => {
                     {currentUser?.coins ? currentUser.coins : 0}
                   </p>
                 </li>
+                <li className="hover:bg-base-300">
+                  <NavLink to="/" className="flex items-center gap-2">
+                    <GoHome className="text-lg" /> Home
+                  </NavLink>
+                </li>
                 <li
                   onClick={() => setOpen(false)}
                   className="hover:bg-base-300"
@@ -160,7 +166,7 @@ const DashboardNavbar = () => {
                   onClick={() => setOpen(false)}
                   className="hover:bg-base-300"
                 >
-                  <NavLink className="flex items-center gap-2">
+                  <NavLink to="help" className="flex items-center gap-2">
                     <IoIosHelpCircleOutline className="text-lg" /> Help
                   </NavLink>
                 </li>
@@ -190,11 +196,15 @@ const DashboardNavbar = () => {
                 setShow(true);
                 setOpen(false);
               }}
-              className="p-2"
+              className=""
             >
               <IoIosNotificationsOutline className="text-xl cursor-pointer md:text-2xl text-gray-600 hover:text-primaryColor transition-colors duration-300" />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
-                {currentUser?.role === "Worker" ? notification?.length : 0}
+                {currentUser?.role === "Worker"
+                  ? notification?.length
+                  : currentUser?.role === "Buyer"
+                  ? review?.length
+                  : 0}
               </span>
             </button>
             <div
@@ -226,9 +236,20 @@ const DashboardNavbar = () => {
                     </div>
                   ) : (
                     // Notifications List
-                    <div className="p-2">
+                    <div className="">
                       {currentUser?.role === "Buyer" ? (
-                        <div></div>
+                        <ul className="space-y-2 overflow-y-auto max-h-[200px]">
+                          {review.map((r) => (
+                            <li
+                              onClick={() => navigate("Buyer")}
+                              key={r._id}
+                              className="list-item list-decimal list-inside text-xs lg:text-sm bg-base-200 text-gray-500 p-2 cursor-pointer"
+                            >
+                              <i>{r.worker_name || "Anonymous"}</i> submitted a
+                              task. Click to review.
+                            </li>
+                          ))}
+                        </ul>
                       ) : currentUser?.role === "Worker" &&
                         notification?.length > 0 ? (
                         <ul className="flex flex-col gap-2">

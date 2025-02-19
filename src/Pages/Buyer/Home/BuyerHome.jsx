@@ -121,7 +121,7 @@ const BuyerHome = () => {
   const totalTasks = tasks.length;
   const pendingTasks = submissions.filter((task) => task.status == "pending");
   const completeTask = submissions.filter((task) => task.status == "approved");
-
+  console.log(pendingTasks);
   const totalPayment = parseInt(
     submissions
       .filter((pay) => pay.status === "approved")

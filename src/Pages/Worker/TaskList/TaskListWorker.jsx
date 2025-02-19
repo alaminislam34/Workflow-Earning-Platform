@@ -1,25 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../../Axios/useAxiosSecure";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Aos from "aos";
 import DashboardTitle from "../../../Components/DashboardTitle/DashboardTitle";
+import { AuthContext } from "../../../Auth/AuthContext";
 
 const TaskListWorker = () => {
   const navigate = useNavigate();
+  const { tasksData, isLoading } = useContext(AuthContext);
 
   // Fetch tasks with pagination
-  const { data: tasksData, isLoading } = useQuery({
-    queryKey: ["tasks"],
-    queryFn: async () => {
-      const res = await axiosInstance.get(`/tasks`, {
-        withCredentials: true,
-      });
-      return res.data;
-    },
-    keepPreviousData: true,
-  });
 
   // Pagination logic
   const [currentPage, setCurrentPage] = useState(1);

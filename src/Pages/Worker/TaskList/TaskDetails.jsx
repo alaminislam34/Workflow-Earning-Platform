@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const TaskDetails = () => {
   const { data } = useLoaderData();
-  const { user } = useContext(AuthContext);
+  const { user, taskRefetch } = useContext(AuthContext);
   const [submissionDetails, setSubmissionDetails] = useState("");
 
   const handleSubmit = async (e) => {
@@ -46,6 +46,7 @@ const TaskDetails = () => {
             timer: 3000,
             icon: "success",
           });
+          taskRefetch();
           setSubmissionDetails("");
         }
       } catch (error) {
@@ -156,7 +157,7 @@ const TaskDetails = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-3 bg-orange-600 text-white text-sm lg:text-base font-semibold rounded-lg hover:bg-orange-700 transition-all"
+            className="w-full py-3 cursor-pointer bg-orange-500 text-white text-sm lg:text-base font-semibold rounded-lg hover:bg-orange-600 transition-all"
           >
             Submit Work
           </button>

@@ -54,6 +54,21 @@ const Auth = ({ children }) => {
     },
     enabled: !!user,
   });
+  // task query
+  const {
+    data: tasksData,
+    isLoading,
+    refetch: taskRefetch,
+  } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/tasks`, {
+        withCredentials: true,
+      });
+      return res.data;
+    },
+    keepPreviousData: true,
+  });
 
   const {
     data: currentUser,
@@ -101,6 +116,9 @@ const Auth = ({ children }) => {
     review,
     setReview,
     handleLogout,
+    tasksData,
+    isLoading,
+    taskRefetch,
   };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;

@@ -20,6 +20,7 @@ a {
 }
 
 a.active {
+  color: #ff6f00;
   font-weight: 700;
 }
 

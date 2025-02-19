@@ -71,18 +71,18 @@ const WithDrawals = () => {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="max-w-4xl mx-auto bg-white shadow-2xl rounded-3xl p-10 space-y-8 border-t-4 border-orange-500"
+        className="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-10 space-y-8 border-t-4 border-orange-500"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div className="text-center sm:text-left">
-            <p className="text-sm md:text-base lg:text-xl font-semibold text-gray-700">
+            <p className="text-sm lg:text-base text-gray-700">
               Total Coins:{" "}
               <span className="text-orange-600">{currentUser?.coins}</span>{" "}
               coins
             </p>
           </div>
           <div className="text-center sm:text-left">
-            <p className="text-sm md:text-base lg:text-xl font-semibold text-gray-700">
+            <p className="text-sm lg:text-base text-gray-700">
               Equivalent Withdrawal Amount:{" "}
               <span className="text-orange-600">
                 ${(currentUser?.coins / 20).toFixed(2)}
@@ -95,7 +95,7 @@ const WithDrawals = () => {
           <p
             data-aos="fade-up"
             data-aos-anchor-placement="center-bottom"
-            className="text-center text-red-600 text-xs md:text-sm lg:text-base"
+            className="text-center text-red-500 text-xs lg:text-sm"
           >
             Insufficient coins to withdraw. Minimum 300 coins required.
           </p>
