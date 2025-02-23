@@ -37,6 +37,17 @@ const Auth = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
         setLoading(false);
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            console.log("User Location:", latitude, longitude);
+
+            // Ekhane tumi ei location ke database e save korte paro
+          },
+          (error) => {
+            console.error("Error getting location:", error);
+          }
+        );
         try {
           const res = await axiosPublic.post("/jwt", {
             email: currentUser.email,

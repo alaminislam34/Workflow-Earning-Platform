@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
+import earn from "../../assets/images/earn.jpg";
 
 const WelcomeModal = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,7 +23,10 @@ const WelcomeModal = () => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
-      <div className="bg-earn relative bg-cover rounded-lg shadow-lg max-w-2xl h-[300px] overflow-hidden md:h-[350px] w-full flex justify-center items-center text-white">
+      <div
+        style={{ backgroundImage: `url(${earn})` }}
+        className=" relative bg-cover rounded-lg shadow-lg max-w-2xl h-[300px] overflow-hidden md:h-[350px] w-full flex justify-center items-center text-white"
+      >
         <button
           onClick={handleClose}
           className="absolute top-0 right-0 btn btn-sm btn-circle "

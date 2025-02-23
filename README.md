@@ -1,133 +1,106 @@
-# Micro Task Earning Platform
+# Workflow Earning Platform
 
-## WorkFlow
+## Introduction
 
-[Live Link](https://workflow-bd.web.app/)
+**Workflow Earning Platform** is a micro-task earning application that enables users to complete tasks and earn rewards. Built using modern web technologies, it leverages **React, Firebase, Stripe, and TailwindCSS** for a smooth user experience.
 
-## Micro-tasking and Earning Platform
+## Table of Contents
 
-This platform is designed for micro-tasking and earning, where users take on specific roles to complete tasks, submit reviews, withdraw coins, and receive notifications. The platform consists of three key roles: Worker, Buyer, and Admin.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Environment Variables](#environment-variables)
+- [Dependencies](#dependencies)
+- [Development](#development)
+- [License](#license)
 
-### Roles
+## Installation
 
-#### Workers
+To set up the project locally, follow these steps:
 
-- Complete tasks.
-- Submit reviews.
-- Withdraw earned coins.
-- Stay updated with notifications.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo/workflow-earning-platform.git
+   cd workflow-earning-platform
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Create a `.env` file in the root directory and add the required environment variables (see [Environment Variables](#environment-variables) section).
+4. Start the development server:
+   ```sh
+   npm run dev
+   ```
 
-#### Buyers
+## Usage
 
-- Create tasks.
-- Review completed submissions.
-- Make payments.
-- Purchase coins.
-- Report any issues.
+- Users can sign up, complete tasks, and earn rewards.
+- Administrators can manage tasks, track user activity, and process payments.
+- Integrated payment gateway (Stripe) allows users to withdraw earnings.
 
-#### Admins
+## Features
 
-- Manage user roles.
-- Address reports.
-- Ensure the integrity of the system.
+✅ Micro-task marketplace  
+✅ Firebase authentication  
+✅ Secure payments with Stripe  
+✅ Interactive UI with React and TailwindCSS  
+✅ Performance-optimized with Vite
 
-## Design Focus
+## Environment Variables
 
-The website’s design is focused on providing a smooth and user-friendly experience. The layout is modern and clean, with an intuitive structure that enables easy navigation across all devices. The responsive design ensures that users have a seamless experience whether on a desktop, tablet, or mobile phone.
+Create a `.env` file and add the following:
 
-## Used Technologies
-
-This project uses the following technologies:
-
-- HTML and CSS
-- JavaScript
-- React
-- Tailwind CSS
-- Node.js
-- Express.js
-- MongoDB
-- Firebase
-
-## Key Features
-
-#### ✅ Fully Responsive Design:
-
-The platform is optimized for all devices, ensuring a seamless user experience across desktops, tablets, and mobile phones.
-
-#### ✅ Add Tasks:
-
-Users can create and add tasks of their own choice to be completed by workers.
-
-#### ✅ View Task Details:
-
-Users can access detailed information about tasks and submissions to ensure transparency and a more personalized experience.
-
-#### ✅ Task Update and Delete:
-
-Users can add, update, or delete tasks they have created, providing flexibility in managing their tasks.
-
-#### ✅ Manage Roles:
-
-Admins can manage the roles of users, ensuring proper access control and maintaining the platform's integrity.
-
-#### ✅ Service Management:
-
-Users can update or remove any services they have added to keep the platform up-to-date.
-
-#### ✅ Notifications:
-
-Users receive notifications for task completion, submission reviews, and other important activities.
-
-#### ✅ Payment System:
-
-Buyers can make payments for tasks, ensuring a secure and efficient transaction process.
-
-#### ✅ User Reviews:
-
-Users can leave feedback and rate services to help improve task quality and platform trust.
-
-## Tools
-
-        1. Git
-        2. GitHub
-        3. vercel
-        4. firebase hosting
-
-## NPM Package:
-
-        1. React Router Dom
-        2. React Icons
-        3. React toastify
-        5. React Hook Form
-        6. React Select
-        7. SweetAlert2
-        8. Keen Slider
-        9. Aos Animaiont
-        10. Stripe Payment
-
-## Design and User Experience
-
-The platform’s design emphasizes simplicity and usability, focusing on providing a user-friendly experience:
-
-- **Clear Navigation**: Easy-to-find links and intuitive layout.
-- **Modern and Clean Aesthetics**: A minimalist design with ample white space, making the platform visually appealing and easy to read.
-- **Responsive Layout**: Adapts seamlessly across desktops, tablets, and mobile phones.
-- **Interactive Elements**: Animation effects on scroll (AOS) and smooth transitions.
-- **Accessibility**: Proper contrast, large fonts, and clear calls to action.
-
-The goal of the design is to make the platform accessible, efficient, and enjoyable for users across all devices and use cases.
-
-## 🔑 Environment Variables
-
-Before running this project, create a `.env.local` file in the root directory and add the following values:
-
-```bash
-VITE_API_KEY=your_firebase_api_key_here
-VITE_AUTH_DOMAIN=your_firebase_auth_domain_here
-VITE_PROJECT_ID=your_firebase_project_id_here
-VITE_STORAGE_BUCKET=your_firebase_storage_bucket_here
-VITE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
-VITE_APP_ID=your_firebase_app_id_here
-VITE_IMG_API_KEY=your_image_api_key_here
-VITE_STRIPE_PK=your_stripe_public_key_here
+```env
+VITE_apiKey=YOUR_FIREBASE_API_KEY
+VITE_authDomain=YOUR_FIREBASE_AUTH_DOMAIN
+VITE_projectId=YOUR_FIREBASE_PROJECT_ID
+VITE_storageBucket=YOUR_FIREBASE_STORAGE_BUCKET
+VITE_messagingSenderId=YOUR_FIREBASE_MESSAGING_SENDER_ID
+VITE_appId=YOUR_FIREBASE_APP_ID
+VITE_IMG_API_KEY=YOUR_IMAGE_API_KEY
+VITE_STRIPE_PK=YOUR_STRIPE_PUBLIC_KEY
 ```
+
+**Note:** Replace values with actual API keys before running the project.
+
+## Dependencies
+
+The project uses the following major dependencies:
+
+- **React** (`^18.3.1`) - UI framework
+- **Vite** (`^6.0.5`) - Development environment
+- **Firebase** (`^11.2.0`) - Backend services
+- **Stripe** (`^17.5.0`) - Payment processing
+- **TailwindCSS** (`^4.0.0`) - Styling
+- **React Router** (`^7.1.3`) - Routing
+
+## Development
+
+Run the development server:
+
+```sh
+npm run dev
+```
+
+Build for production:
+
+```sh
+npm run build
+```
+
+Run ESLint for code linting:
+
+```sh
+npm run lint
+```
+
+Preview the production build:
+
+```sh
+npm run preview
+```
+
+## License
+
+This project is **private** and not open-source.

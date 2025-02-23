@@ -103,7 +103,7 @@ const DashboardStats = ({
 
       {/* chart */}
       <div className="text-xs p-6 rounded shadow-lg">
-        <h2 className="text-xl lg:text-2xl font-bold text-gray-800 mb-4 text-center">
+        <h2 className="text-xl lg:text-2xl font-bold mb-4 text-center">
           Statistics Overview Chart
         </h2>
         <ResponsiveContainer width="100%" height={200}>
