@@ -1,8 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { FaCoins } from "react-icons/fa";
-import { MdPendingActions } from "react-icons/md";
-import { RiFileList2Fill } from "react-icons/ri";
 import {
   // BarChart,
   // Bar,
@@ -17,6 +14,7 @@ import {
   Area, // Import Cell
 } from "recharts";
 import { AuthContext } from "../../../../Auth/AuthContext";
+import { BadgeCheck, HandCoins, ListChecks, ListTodo } from "lucide-react";
 
 const DashboardStats = ({
   approvedSubmissions,
@@ -24,7 +22,29 @@ const DashboardStats = ({
   totalPending,
   totalEarning,
 }) => {
-  const { currentUser, theme } = useContext(AuthContext);
+  const stats = [
+    {
+      label: "Total Submissions",
+      value: totalSubmissions,
+      icon: <ListChecks />,
+    },
+    {
+      label: "Total Pending",
+      value: totalPending,
+      icon: <ListTodo />,
+    },
+    {
+      label: "Total Earning",
+      value: totalEarning,
+      icon: <HandCoins />,
+    },
+    {
+      label: "Approved Submissions",
+      value: approvedSubmissions?.length,
+      icon: <BadgeCheck />,
+    },
+  ];
+  const { theme } = useContext(AuthContext);
   const formatDate = (date) => {
     return new Date(date).toLocaleString("en-US", {
       month: "short",
@@ -44,61 +64,26 @@ const DashboardStats = ({
       {/* Data Display Section */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8 m-4 md:m-6">
         {/* Data Cards */}
-        <div
-          className={` p-4 rounded shadow text-center relative ${
-            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-          }`}
-        >
-          <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
-            <RiFileList2Fill />
-            Total Submissions
-          </h3>
-          <p className="text-base lg:text-lg text-left font-semibold">
-            {totalSubmissions}
-          </p>
-        </div>
-        {/* Data Cards */}
-        <div
-          className={` p-4 rounded shadow text-center relative ${
-            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-          }`}
-        >
-          <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
-            <MdPendingActions />
-            Total Pending
-          </h3>
-          <p className="text-base lg:text-lg text-left font-semibold">
-            {totalPending}
-          </p>
-        </div>
-        {/* Data Cards */}
-        <div
-          className={` p-4 rounded shadow text-center relative ${
-            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-          }`}
-        >
-          <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
-            <FaCoins />
-            Total Earnings
-          </h3>
-          <p className="text-base lg:text-lg text-left font-semibold">
-            ${totalEarning}
-          </p>
-        </div>
-        {/* Data Cards */}
-        <div
-          className={` p-4 rounded shadow text-center relative ${
-            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-          }`}
-        >
-          <h3 className="text-sm font-medium flex items-start gap-2 justify-start">
-            <FaCoins />
-            Total Coins
-          </h3>
-          <p className="text-base lg:text-lg text-left font-semibold">
-            ${currentUser?.coins}
-          </p>
-        </div>
+        {stats.map(({ label, value, icon }, i) => (
+          <div
+            key={i}
+            className={` p-4 rounded-2xl shadow text-center relative group ${
+              theme === "light"
+                ? "bg-white border border-primaryColor"
+                : "bg-gray-800 text-white"
+            }`}
+          >
+            <div className="flex items-center justify-center pb-2">
+              <h3 className="flex items-center justify-center group-hover:bg-primaryColor duration-300 group-hover:text-white w-10 h-10 rounded-full border border-primaryColor text-primaryColor">
+                {icon}
+              </h3>
+            </div>
+            <p className="flex flex-row gap-2 items-center justify-center">
+              {label}
+              {value}
+            </p>
+          </div>
+        ))}
       </div>
 
       {/* chart */}

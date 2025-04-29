@@ -83,7 +83,7 @@ const DashboardNavbar = () => {
       <div
         data-aos="fade-right"
         data-aos-anchor-placement="center-bottom"
-        className="flex justify-between items-center max-w-7xl mx-auto p-2 relative"
+        className="flex justify-between items-center p-2 relative"
       >
         {/* navbar Toggle Button */}
         <div className="flex items-center gap-2">
