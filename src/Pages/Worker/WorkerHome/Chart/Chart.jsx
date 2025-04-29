@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useState, useMemo } from "react";
 import { AuthContext } from "../../../../Auth/AuthContext";
 import { BadgeCheck, HandCoins, ListChecks, ListTodo } from "lucide-react";
 import {
@@ -15,6 +15,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
+import { format, parseISO } from "date-fns";
 
 ChartJS.register(
   LineElement,
@@ -34,6 +35,20 @@ const DashboardStats = ({
   totalEarning,
 }) => {
   const { theme } = useContext(AuthContext);
+
+  // State for selected month
+  const [selectedMonth, setSelectedMonth] = useState(
+    format(new Date(), "yyyy-MM")
+  );
+
+  // Filter submissions based on selected month
+  const filteredSubmissions = useMemo(() => {
+    return approvedSubmissions?.filter((item) => {
+      const itemDate = parseISO(item.current_date);
+      const itemMonth = format(itemDate, "yyyy-MM");
+      return itemMonth === selectedMonth;
+    });
+  }, [approvedSubmissions, selectedMonth]);
 
   const stats = [
     {
@@ -58,13 +73,12 @@ const DashboardStats = ({
     },
   ];
 
-  // Chart.js Data
   const chartData = {
-    labels: approvedSubmissions?.map((item) => item.current_date),
+    labels: filteredSubmissions?.map((item) => item.current_date),
     datasets: [
       {
         label: "Payable Amount",
-        data: approvedSubmissions?.map((item) => item.payable_amount),
+        data: filteredSubmissions?.map((item) => item.payable_amount),
         fill: true,
         backgroundColor: "rgba(130, 202, 157, 0.2)",
         borderColor: "#82ca9d",
@@ -73,7 +87,6 @@ const DashboardStats = ({
     ],
   };
 
-  // Chart.js Options
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -143,18 +156,28 @@ const DashboardStats = ({
               </h3>
             </div>
             <p className="flex flex-row gap-2 items-center justify-center">
-              {label}
-              {value}
+              {label} {value}
             </p>
           </div>
         ))}
       </div>
 
-      {/* Chart */}
+      {/* Chart Section */}
       <div className="text-xs p-6 rounded shadow-lg">
-        <h2 className="text-xl lg:text-2xl font-bold mb-4 text-center">
-          Statistics Overview Chart
-        </h2>
+        <div className="flex flex-col md:flex-row items-center justify-between mb-4">
+          <h2 className="text-xl lg:text-2xl font-bold text-center md:text-left mb-4 md:mb-0">
+            Statistics Overview Chart
+          </h2>
+
+          {/* Month Selector */}
+          <input
+            type="month"
+            value={selectedMonth}
+            onChange={(e) => setSelectedMonth(e.target.value)}
+            className="border border-primaryColor rounded-md p-2 focus:outline-none focus:ring focus:border-primaryColor"
+          />
+        </div>
+
         <Line data={chartData} options={chartOptions} />
       </div>
     </div>
