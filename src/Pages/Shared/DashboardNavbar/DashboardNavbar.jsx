@@ -161,17 +161,19 @@ const DashboardNavbar = () => {
               />
             </label>
             <div
-              className={`w-44 absolute transition-all ease-in-out duration-200 ${
+              className={`w-54 lg:w-56 border border-gray-400 overflow-hidden absolute transition-all ease-in-out duration-500 ${
                 open
                   ? "top-[50px] opacity-100"
-                  : "opacity-0 top-16 pointer-events-none"
+                  : "opacity-0 -top-16 pointer-events-none"
               } right-0 ${
                 theme === "light" ? "bg-white" : "bg-gray-800 text-white"
               } shadow-xl rounded-lg`}
             >
               <ul className="text-sm text-gray-600 font-medium">
-                <li onClick={() => setOpen(false)} className="pb-2">
-                  <p className="flex items-center justify-between gap-2 px-3 py-2">
+                <li className="p-2 space-y-1">
+                  <p className="text-lg">{currentUser?.name}</p>
+                  <p className="text-sm">{currentUser?.email}</p>
+                  <p className="flex items-center gap-2">
                     <span> Coins: </span>
                     <span className="flex items-center gap-1">
                       {currentUser?.coins ? currentUser.coins : 0}{" "}
@@ -179,8 +181,9 @@ const DashboardNavbar = () => {
                     </span>
                   </p>
                 </li>
+                <li className="border-b my-2"></li>
                 <li className="hover:bg-base-300">
-                  <NavLink to="/" className="flex items-center gap-2">
+                  <NavLink to="/" className="flex items-center gap-2 py-2 px-4">
                     <GoHome className="text-lg" /> Home
                   </NavLink>
                 </li>
@@ -188,7 +191,10 @@ const DashboardNavbar = () => {
                   onClick={() => setOpen(false)}
                   className="hover:bg-base-300"
                 >
-                  <NavLink to="profileInfo" className="flex items-center gap-2">
+                  <NavLink
+                    to="profileInfo"
+                    className="flex items-center gap-2 py-2 px-4"
+                  >
                     <CiUser className="text-lg" /> Profile
                   </NavLink>
                 </li>
@@ -196,7 +202,10 @@ const DashboardNavbar = () => {
                   onClick={() => setOpen(false)}
                   className="hover:bg-base-300"
                 >
-                  <NavLink to="help" className="flex items-center gap-2">
+                  <NavLink
+                    to="help"
+                    className="flex items-center gap-2 py-2 px-4"
+                  >
                     <IoIosHelpCircleOutline className="text-lg" /> Help
                   </NavLink>
                 </li>
@@ -210,7 +219,7 @@ const DashboardNavbar = () => {
                       handleLogout();
                       navigate("/");
                     }}
-                    className="flex items-center gap-2 text-red-600 cursor-pointer px-3 py-2 w-full"
+                    className="flex items-center gap-2 py-2 px-4 text-red-600 cursor-pointer w-full"
                   >
                     <IoIosLogOut /> Logout
                   </button>
