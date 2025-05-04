@@ -72,6 +72,9 @@ const AdminChart = ({ stats, totalPayments }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
         {stat?.map(({ label, value, icon }, i) => (
           <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+            data-aos-delay={i * 100}
             key={i}
             className={`p-4 rounded-2xl shadow text-center relative group ${
               theme === "light"

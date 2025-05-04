@@ -127,6 +127,30 @@ const BuyerHome = () => {
       .filter((pay) => pay.status === "approved")
       .reduce((sum, payable) => sum + parseInt(payable.payable_amount) || 0, 0)
   );
+
+  const stats = [
+    {
+      label: "Total Tasks",
+      value: totalTasks,
+      icon: <BiDetail />,
+    },
+    {
+      label: "Pending Tasks",
+      value: pendingTasks?.length,
+      icon: <RxCrossCircled />,
+    },
+    {
+      label: "Complete Tasks",
+      value: completeTask?.length,
+      icon: <IoCheckmarkDoneSharp />,
+    },
+    {
+      label: "Total Payment",
+      value: totalPayment,
+      icon: <BiDetail />,
+    },
+  ];
+
   return (
     <div className="md:p-5">
       <Helmet>
@@ -135,6 +159,28 @@ const BuyerHome = () => {
       <DashboardHomeTitle />
       <br />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {stats?.map(({ label, value, icon }, i) => (
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+            data-aos-delay={i * 100}
+            key={i}
+            className={`p-4 rounded-2xl shadow text-center relative group ${
+              theme === "light"
+                ? "bg-white border border-primaryColor"
+                : "bg-gray-800 text-white"
+            }`}
+          >
+            <div className="flex items-center justify-center pb-2">
+              <h3 className="flex items-center justify-center group-hover:bg-primaryColor duration-300 group-hover:text-white w-10 h-10 rounded-full border border-primaryColor text-primaryColor">
+                {icon}
+              </h3>
+            </div>
+            <p className="flex flex-row gap-2 items-center justify-center">
+              {label} {value}
+            </p>
+          </div>
+        ))}
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"

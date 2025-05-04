@@ -143,6 +143,9 @@ const DashboardStats = ({
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8 m-4 md:m-6">
         {stats.map(({ label, value, icon }, i) => (
           <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+            data-aos-delay={i * 100}
             key={i}
             className={`p-4 rounded-2xl shadow text-center relative group ${
               theme === "light"
