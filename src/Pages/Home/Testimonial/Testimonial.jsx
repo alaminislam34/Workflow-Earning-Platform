@@ -7,9 +7,11 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { AuthContext } from "../../../Auth/AuthContext";
+import TestimonialForm from "./ReviewForm";
 
 const Testimonial = () => {
   const [clients, setClients] = useState([]);
+  const [open, setOpen] = useState(false);
   const { theme } = useContext(AuthContext);
   const [sliderRef, sliderInstance] = useKeenSlider({
     loop: true,
@@ -113,6 +115,23 @@ const Testimonial = () => {
       ) : (
         <p>Loading testimonials...</p>
       )}
+      <div className="flex justify-center items-center">
+        <button
+          onClick={() => setOpen(true)}
+          className="btn btn-md text-white lg:btn-lg bg-btnColor hover:bg-primaryColor rounded-xl"
+        >
+          Post Your Review
+        </button>
+      </div>
+      <div
+        className={`${
+          open ? "block" : "hidden"
+        } fixed top-0 left-0 bg-black/40 z-50 w-screen h-screen flex justify-center items-center`}
+      >
+        <div className="w-full h-full flex justify-center items-center">
+          <TestimonialForm setOpen={setOpen} />
+        </div>
+      </div>
       <br />
       <br />
     </div>
