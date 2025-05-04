@@ -181,54 +181,6 @@ const BuyerHome = () => {
             </p>
           </div>
         ))}
-        <div
-          data-aos="fade-up"
-          data-aos-anchor-placement="center-bottom"
-          className={`p-4 rounded-lg shadow-lg text-center  ${
-            theme === "light" ? "bg-orange-100" : "bg-gray-800"
-          }`}
-        >
-          <h3 className="text-xs md:text-sm ">Total Tasks</h3>
-          <p className="text-xl md:text-2xl tracking-widest font-bold">
-            {totalTasks}
-          </p>
-        </div>
-        <div
-          data-aos="fade-up"
-          data-aos-anchor-placement="center-bottom"
-          className={`p-4  rounded-lg shadow-lg text-center  ${
-            theme === "light" ? "bg-orange-100" : "bg-gray-800"
-          }`}
-        >
-          <h3 className="text-xs md:text-sm ">Pending Tasks</h3>
-          <p className="text-xl md:text-2xl tracking-widest font-bold">
-            {pendingTasks?.length}
-          </p>
-        </div>
-        <div
-          data-aos="fade-up"
-          data-aos-anchor-placement="center-bottom"
-          className={`p-4  rounded-lg shadow-lg text-center  ${
-            theme === "light" ? "bg-orange-100" : "bg-gray-800"
-          }`}
-        >
-          <h3 className="text-xs md:text-sm ">Total Coins</h3>
-          <p className="text-xl md:text-2xl tracking-widest font-bold">
-            ${currentUser?.coins}
-          </p>
-        </div>
-        <div
-          data-aos="fade-up"
-          data-aos-anchor-placement="center-bottom"
-          className={`p-4  rounded-lg shadow-lg text-center  ${
-            theme === "light" ? "bg-orange-100" : "bg-gray-800"
-          }`}
-        >
-          <h3 className="text-xs md:text-sm ">Total Payment</h3>
-          <p className="text-xl md:text-2xl tracking-widest font-bold">
-            ${totalPayment}
-          </p>
-        </div>
       </div>
       <BuyerChart
         totalTasks={totalTasks}
