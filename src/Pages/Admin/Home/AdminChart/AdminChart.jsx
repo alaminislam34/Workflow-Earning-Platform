@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 
-import { FaCoins, FaCreditCard, FaDollarSign, FaUsers } from "react-icons/fa";
-
 import {
   BarChart,
   Bar,
@@ -17,6 +15,7 @@ import {
 } from "recharts";
 import { AuthContext } from "../../../../Auth/AuthContext";
 import { useContext } from "react";
+import { Coins, Users } from "lucide-react";
 
 const AdminChart = ({ stats, totalPayments }) => {
   const { theme } = useContext(AuthContext);
@@ -40,6 +39,28 @@ const AdminChart = ({ stats, totalPayments }) => {
     },
     { name: "Total Payments", value: totalPayments },
   ];
+  const stat = [
+    {
+      label: "Total Users",
+      value: stats?.filter((user) => user.role === "Worker").length,
+      icon: <Users size={20} />,
+    },
+    {
+      label: "Total Worker",
+      value: stats?.filter((user) => user.role === "Worker").length,
+      icon: <Users size={20} />,
+    },
+    {
+      label: "Total Buyer",
+      value: stats?.filter((user) => user.role === "Buyer").length,
+      icon: <Users size={20} />,
+    },
+    {
+      label: "Total Coins",
+      value: stats?.reduce((sum, user) => sum + (user.coins || 0), 0),
+      icon: <Coins size={20} />,
+    },
+  ];
 
   // Colors for Pie Chart
   const COLORS = ["#FFD700", "#FF4500"];
@@ -49,70 +70,25 @@ const AdminChart = ({ stats, totalPayments }) => {
       {/* Stats Cards */}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-        <div
-          data-aos="fade-up"
-          data-aos-delay="200"
-          data-aos-anchor-placement="center-bottom"
-          className={`p-6 flex justify-center gap-2 items-center flex-col  text-center rounded-lg shadow-lg ${
-            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-          }`}
-        >
-          <p className="flex items-center gap-2">
-            <FaUsers className="text-xl " />
-            <span className="text-xs lg:text-sm">Workers</span>
-          </p>
-          <h2 className="text-2xl font-bold ">
-            {stats?.filter((user) => user.role === "Worker").length}
-          </h2>
-        </div>
-        <div
-          data-aos="fade-up"
-          data-aos-delay="400"
-          data-aos-anchor-placement="center-bottom"
-          className={`p-6 flex justify-center items-center flex-col  text-center rounded-lg shadow-lg ${
-            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-          }`}
-        >
-          <p className="flex items-center gap-2">
-            <FaCreditCard className="text-xl " />
-            <span className="text-xs lg:text-sm">Buyers</span>
-          </p>
-          <h2 className="text-2xl font-bold ">
-            {stats?.filter((user) => user.role === "Buyer").length}
-          </h2>
-        </div>
-        <div
-          data-aos="fade-up"
-          data-aos-delay="600"
-          data-aos-anchor-placement="center-bottom"
-          className={`p-6 flex justify-center items-center flex-col  text-center rounded-lg shadow-lg ${
-            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-          }`}
-        >
-          <p className="flex items-center gap-2">
-            <FaCoins className="text-xl " />
-            <span className="text-xs lg:text-sm">Coins</span>
-          </p>
-          <h2 className="text-2xl font-bold  flex items-center gap-2">
-            {stats?.reduce((sum, user) => sum + (user.coins || 0), 0)}
-          </h2>
-        </div>
-        <div
-          data-aos="fade-up"
-          data-aos-delay="800"
-          data-aos-anchor-placement="center-bottom"
-          className={`p-6 flex justify-center items-center flex-col  text-center rounded-lg shadow-lg ${
-            theme === "light" ? "bg-white" : "bg-gray-800 text-white"
-          }`}
-        >
-          <p className="flex items-center gap-2">
-            <FaDollarSign className="text-xl " />
-            <span className="text-xs lg:text-sm">Payments</span>
-          </p>
-          <h2 className="text-2xl font-bold  flex items-center gap-2">
-            {totalPayments}
-          </h2>
-        </div>
+        {stat?.map(({ label, value, icon }, i) => (
+          <div
+            key={i}
+            className={`p-4 rounded-2xl shadow text-center relative group ${
+              theme === "light"
+                ? "bg-white border border-primaryColor"
+                : "bg-gray-800 text-white"
+            }`}
+          >
+            <div className="flex items-center justify-center pb-2">
+              <h3 className="flex items-center justify-center group-hover:bg-primaryColor duration-300 group-hover:text-white w-10 h-10 rounded-full border border-primaryColor text-primaryColor">
+                {icon}
+              </h3>
+            </div>
+            <p className="flex flex-row gap-2 items-center justify-center">
+              {label} {value}
+            </p>
+          </div>
+        ))}
       </div>
       <section className="">
         {/* Workers and Buyers Chart */}
