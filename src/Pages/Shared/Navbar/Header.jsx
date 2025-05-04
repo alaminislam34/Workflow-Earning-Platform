@@ -86,7 +86,7 @@ const Header = () => {
                 )}
               </button>
               <a
-                href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-alaminislam34"
+                href="https://github.com/alaminislam34/Workflow-Earning-Platform"
                 style={{ color: "#ffffff", transitionDuration: "0.2s" }}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -177,7 +177,7 @@ const Header = () => {
                 </button>
               </div>
               <a
-                href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-alaminislam34"
+                href="https://github.com/alaminislam34/Workflow-Earning-Platform"
                 style={{ color: "#ffffff", transitionDuration: "0.2s" }}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -255,7 +255,7 @@ const Header = () => {
             <li className="py-2 hover:bg-base-300">
               <a
                 onClick={() => setIsMenuOpen(false)}
-                href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-alaminislam34"
+                href="https://github.com/alaminislam34/Workflow-Earning-Platform"
                 target="_blank"
                 rel="noopener noreferrer"
                 className=" w-full inline-block"
@@ -346,7 +346,7 @@ const Header = () => {
               <li className="bg-primaryColor py-2">
                 {/* Join as Developer */}
                 <a
-                  href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-alaminislam34"
+                  href="https://github.com/alaminislam34/Workflow-Earning-Platform"
                   style={{ transitionDuration: "0.2s" }}
                   target="_blank"
                   rel="noopener noreferrer"
